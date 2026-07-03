@@ -109,7 +109,7 @@ export default function AdminControlBar() {
           >
             <option value="">-- Sunting Bagian --</option>
             <option value="hero">Banner Hero & Identitas</option>
-            <option value="profil">Profil & Visi Misi (Profil Utama)</option>
+            <option value="profil">Profil & Visi Misi</option>
             <option value="struktur">Struktur Organisasi</option>
             <option value="agenda">Agenda & Kegiatan Pekan Ini</option>
             <option value="keunggulan">Pilar Keunggulan</option>
