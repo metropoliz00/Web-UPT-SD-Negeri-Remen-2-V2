@@ -3,6 +3,7 @@ import { useCMS } from '../context/CMSContext';
 import { 
   X, Save, Trash, Plus, ImageIcon, Award, BookOpen, Users, HelpCircle, FileText, Settings, GraduationCap, ChevronRight, LayoutGrid, Share2, Play, MonitorPlay
 } from 'lucide-react';
+import * as Icons from 'lucide-react';
 import { KeunggulanItem, ProgramItem, PrestasiItem, GuruItem, GaleriItem, EkstrakurikulerItem, FAQItem, BeritaItem, TestimoniItem, SchoolContent } from '../types';
 
 export default function IntegratedCMSModal() {
@@ -21,6 +22,14 @@ export default function IntegratedCMSModal() {
   const [errorText, setErrorText] = useState<string | null>(null);
   const [editStructSubTab, setEditStructSubTab] = useState<'sekolah' | 'komite'>('sekolah');
   const [structViewMode, setStructViewMode] = useState<'daftar' | 'visual'>('daftar');
+
+  // State variables for Flaticon-style visual Icon Picker
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [iconPickerState, setIconPickerState] = useState<{
+    isOpen: boolean;
+    onSelect: (iconName: string) => void;
+    currentValue: string;
+  } | null>(null);
 
   if (!activeSection) return null;
 
@@ -685,17 +694,28 @@ export default function IntegratedCMSModal() {
                           />
                         </div>
                         <div className="space-y-1">
-                          <label className="text-[10px] text-slate-400 block font-bold">Icon Lucide (e.g. Wind, Monitor)</label>
-                          <input
-                            type="text"
-                            value={f.iconName || ''}
-                            onChange={e => {
-                              const newFas = [...(content.perpustakaan?.fasilitas || [])];
-                              newFas[idx] = { ...newFas[idx], iconName: e.target.value };
-                              updateContentField('perpustakaan', { ...content.perpustakaan, fasilitas: newFas });
-                            }}
-                            className="w-full px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg"
-                          />
+                          <label className="text-[10px] text-slate-500 block font-bold">Ikon (Gaya Flaticon)</label>
+                          <button
+                            type="button"
+                            onClick={() => setIconPickerState({
+                              isOpen: true,
+                              currentValue: f.iconName || 'Wind',
+                              onSelect: (selectedName) => {
+                                const newFas = [...(content.perpustakaan?.fasilitas || [])];
+                                newFas[idx] = { ...newFas[idx], iconName: selectedName };
+                                updateContentField('perpustakaan', { ...content.perpustakaan, fasilitas: newFas });
+                              }
+                            })}
+                            className="w-full flex items-center justify-between px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg hover:bg-slate-100 text-left cursor-pointer transition-colors"
+                          >
+                            <div className="flex items-center space-x-2">
+                              <div className="h-6 w-6 rounded-full bg-brand-primary/10 text-brand-primary flex items-center justify-center">
+                                {React.createElement((Icons as any)[f.iconName] || Icons.Wind, { className: "h-3.5 w-3.5" })}
+                              </div>
+                              <span className="text-[11px] font-bold text-slate-700">{f.iconName || 'Wind'}</span>
+                            </div>
+                            <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+                          </button>
                         </div>
                       </div>
                       <div className="space-y-1">
@@ -952,17 +972,28 @@ export default function IntegratedCMSModal() {
                           />
                         </div>
                         <div className="space-y-1">
-                          <label className="text-[10px] text-slate-400 block font-bold">Icon Lucide (e.g. Bed, Activity)</label>
-                          <input
-                            type="text"
-                            value={f.iconName || ''}
-                            onChange={e => {
-                              const newFas = [...(content.uks?.fasilitas || [])];
-                              newFas[idx] = { ...newFas[idx], iconName: e.target.value };
-                              updateContentField('uks', { ...content.uks, fasilitas: newFas });
-                            }}
-                            className="w-full px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg"
-                          />
+                          <label className="text-[10px] text-slate-500 block font-bold">Ikon (Gaya Flaticon)</label>
+                          <button
+                            type="button"
+                            onClick={() => setIconPickerState({
+                              isOpen: true,
+                              currentValue: f.iconName || 'Bed',
+                              onSelect: (selectedName) => {
+                                const newFas = [...(content.uks?.fasilitas || [])];
+                                newFas[idx] = { ...newFas[idx], iconName: selectedName };
+                                updateContentField('uks', { ...content.uks, fasilitas: newFas });
+                              }
+                            })}
+                            className="w-full flex items-center justify-between px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg hover:bg-slate-100 text-left cursor-pointer transition-colors"
+                          >
+                            <div className="flex items-center space-x-2">
+                              <div className="h-6 w-6 rounded-full bg-brand-orange/10 text-brand-orange flex items-center justify-center">
+                                {React.createElement((Icons as any)[f.iconName] || Icons.Bed, { className: "h-3.5 w-3.5" })}
+                              </div>
+                              <span className="text-[11px] font-bold text-slate-700">{f.iconName || 'Bed'}</span>
+                            </div>
+                            <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+                          </button>
                         </div>
                       </div>
                       <div className="space-y-1">
@@ -1130,13 +1161,26 @@ export default function IntegratedCMSModal() {
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
-                      <label className="text-[10px] text-slate-400 font-bold uppercase block">Ikon Lucide (e.g. Award)</label>
-                      <input
-                        type="text"
-                        value={item.iconName || ''}
-                        onChange={e => updateContentListItem('keunggulan', item.id, 'iconName', e.target.value)}
-                        className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl"
-                      />
+                      <label className="text-[10px] text-slate-500 font-bold uppercase block">Ikon (Gaya Flaticon)</label>
+                      <button
+                        type="button"
+                        onClick={() => setIconPickerState({
+                          isOpen: true,
+                          currentValue: item.iconName || 'Award',
+                          onSelect: (selectedName) => {
+                            updateContentListItem('keunggulan', item.id, 'iconName', selectedName);
+                          }
+                        })}
+                        className="w-full flex items-center justify-between px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl hover:bg-slate-100 text-left cursor-pointer transition-colors"
+                      >
+                        <div className="flex items-center space-x-2">
+                          <div className="h-6 w-6 rounded-full bg-brand-primary/10 text-brand-primary flex items-center justify-center">
+                            {React.createElement((Icons as any)[item.iconName] || Icons.Award, { className: "h-3.5 w-3.5" })}
+                          </div>
+                          <span className="text-[11px] font-bold text-slate-700">{item.iconName || 'Award'}</span>
+                        </div>
+                        <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+                      </button>
                     </div>
                     <div className="space-y-1">
                       <label className="text-[10px] text-slate-400 font-bold uppercase block">Judul Pilar</label>
@@ -1677,13 +1721,26 @@ export default function IntegratedCMSModal() {
                         />
                       </div>
                       <div className="space-y-1">
-                        <label className="text-[9px] text-slate-400 block font-bold">Ikon Lucide</label>
-                        <input
-                          type="text"
-                          value={item.iconName}
-                          onChange={e => updateContentListItem('ekstrakurikuler', item.id, 'iconName', e.target.value)}
-                          className="w-full px-2.5 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg text-brand-orange font-bold"
-                        />
+                        <label className="text-[9px] text-slate-500 block font-bold">Ikon (Gaya Flaticon)</label>
+                        <button
+                          type="button"
+                          onClick={() => setIconPickerState({
+                            isOpen: true,
+                            currentValue: item.iconName || 'Sparkles',
+                            onSelect: (selectedName) => {
+                              updateContentListItem('ekstrakurikuler', item.id, 'iconName', selectedName);
+                            }
+                          })}
+                          className="w-full flex items-center justify-between px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg hover:bg-slate-100 text-left cursor-pointer transition-colors"
+                        >
+                          <div className="flex items-center space-x-2">
+                            <div className="h-6 w-6 rounded-full bg-brand-orange/10 text-brand-orange flex items-center justify-center">
+                              {React.createElement((Icons as any)[item.iconName] || Icons.Sparkles, { className: "h-3.5 w-3.5" })}
+                            </div>
+                            <span className="text-[11px] font-bold text-slate-700">{item.iconName || 'Sparkles'}</span>
+                          </div>
+                          <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+                        </button>
                       </div>
                     </div>
                     <div className="space-y-1">
@@ -2489,6 +2546,210 @@ export default function IntegratedCMSModal() {
           </div>
         </div>
       </div>
+
+      {/* FLATICON STYLE ICON PICKER DIALOG */}
+      {iconPickerState && iconPickerState.isOpen && (
+        <div className="fixed inset-0 bg-slate-950/75 backdrop-blur-md z-[200] flex items-center justify-center p-4 animate-fade-in">
+          <div className="w-full max-w-xl bg-white rounded-[2.5rem] shadow-2xl border border-slate-100 flex flex-col max-h-[85vh] overflow-hidden animate-scale-up">
+            {/* Picker Header */}
+            <div className="px-6 py-5 bg-gradient-to-r from-brand-primary/10 via-[#AFDDFF]/10 to-brand-cream/10 border-b border-slate-100 flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="p-2.5 bg-blue-500 text-white rounded-2xl shadow-md">
+                  <LayoutGrid className="h-5 w-5" />
+                </div>
+                <div>
+                  <h4 className="font-display font-black text-slate-900 text-base leading-tight">Pilih Ikon Gaya Flaticon</h4>
+                  <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Visual Flat Icon Browser</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setIconPickerState(null);
+                  setSearchQuery('');
+                }}
+                className="p-2 bg-slate-50 hover:bg-slate-100 text-slate-500 rounded-xl transition-all cursor-pointer"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            {/* Search Input */}
+            <div className="p-4 bg-slate-50/50 border-b border-slate-100">
+              <input
+                type="text"
+                placeholder="Cari ikon... (contoh: Buku, Piala, Laptop, AC...)"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
+                className="w-full px-4 py-2.5 text-sm bg-white border border-slate-200 text-slate-800 rounded-xl focus:ring-2 focus:ring-brand-primary outline-none transition-all shadow-sm font-medium"
+              />
+            </div>
+
+            {/* Grid of Icons categorized */}
+            <div className="flex-grow p-6 overflow-y-auto space-y-6">
+              {CATEGORIZED_ICONS.map((cat) => {
+                const filteredItems = cat.items.filter(item => 
+                  item.name.toLowerCase().includes(searchQuery) || 
+                  item.label.toLowerCase().includes(searchQuery) ||
+                  item.tags.some(t => t.includes(searchQuery))
+                );
+
+                if (filteredItems.length === 0) return null;
+
+                return (
+                  <div key={cat.category} className="space-y-3">
+                    <h5 className="text-[10px] text-slate-400 font-black uppercase tracking-widest block border-b border-slate-100 pb-1">
+                      {cat.category}
+                    </h5>
+                    <div className="grid grid-cols-4 sm:grid-cols-6 gap-3">
+                      {filteredItems.map((item) => {
+                        const Icon = (Icons as any)[item.name] || Icons.Sparkles;
+                        const isSelected = iconPickerState.currentValue === item.name;
+                        
+                        return (
+                          <button
+                            key={item.name}
+                            type="button"
+                            onClick={() => {
+                              iconPickerState.onSelect(item.name);
+                              setIconPickerState(null);
+                              setSearchQuery('');
+                            }}
+                            className={`group relative flex flex-col items-center justify-center p-3 rounded-2xl border transition-all cursor-pointer hover:-translate-y-1 ${
+                              isSelected 
+                                ? 'bg-brand-primary/10 border-brand-primary shadow-md shadow-brand-primary/10' 
+                                : 'bg-white border-slate-200/60 hover:bg-slate-50 hover:border-brand-primary/30'
+                            }`}
+                            title={item.label}
+                          >
+                            <div className={`h-11 w-11 rounded-full flex items-center justify-center transition-transform group-hover:scale-105 shadow-sm ${item.colorClass} ${isSelected ? 'scale-105' : ''}`}>
+                              <Icon className="h-5 w-5 text-white" />
+                            </div>
+                            <span className="text-[9px] font-bold text-slate-700 mt-2 text-center truncate w-full group-hover:text-brand-primary">
+                              {item.label}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+              {CATEGORIZED_ICONS.every(cat => cat.items.filter(item => 
+                item.name.toLowerCase().includes(searchQuery) || 
+                item.label.toLowerCase().includes(searchQuery) ||
+                item.tags.some(t => t.includes(searchQuery))
+              ).length === 0) && (
+                <div className="text-center py-12">
+                  <HelpCircle className="h-10 w-10 text-slate-300 mx-auto mb-2" />
+                  <p className="text-xs font-bold text-slate-500">Ikon tidak ditemukan</p>
+                  <p className="text-[10px] text-slate-400 mt-1">Coba gunakan kata kunci pencarian yang lain.</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
+
+const CATEGORIZED_ICONS = [
+  {
+    category: 'Pendidikan & Belajar',
+    items: [
+      { name: 'BookOpen', label: 'Buku Buka', tags: ['buku', 'baca', 'perpustakaan', 'book', 'read'], colorClass: 'bg-indigo-500' },
+      { name: 'GraduationCap', label: 'Toga Wisuda', tags: ['toga', 'wisuda', 'kelulusan', 'graduation', 'cap', 'alumni'], colorClass: 'bg-blue-600' },
+      { name: 'Award', label: 'Sertifikat', tags: ['piagam', 'penghargaan', 'sertifikat', 'award', 'medal', 'juara'], colorClass: 'bg-yellow-500' },
+      { name: 'Trophy', label: 'Piala', tags: ['juara', 'piala', 'trophy', 'prestasi', 'win', 'gold'], colorClass: 'bg-amber-500' },
+      { name: 'Brain', label: 'Kecerdasan', tags: ['otak', 'cerdas', 'pikir', 'brain', 'smart', 'ipa'], colorClass: 'bg-pink-500' },
+      { name: 'School', label: 'Gedung Sekolah', tags: ['sekolah', 'gedung', 'school', 'building', 'kelas'], colorClass: 'bg-sky-500' },
+      { name: 'Presentation', label: 'Papan Tulis', tags: ['mengajar', 'kelas', 'papan', 'presentation', 'board', 'guru'], colorClass: 'bg-teal-600' },
+      { name: 'Compass', label: 'Kompas', tags: ['arah', 'petualang', 'pramuka', 'compass', 'guide'], colorClass: 'bg-teal-500' },
+      { name: 'Pencil', label: 'Pensil', tags: ['tulis', 'gambar', 'pensil', 'pencil', 'write'], colorClass: 'bg-orange-400' },
+      { name: 'Palette', label: 'Palet Lukis', tags: ['seni', 'gambar', 'lukis', 'art', 'palette'], colorClass: 'bg-purple-500' },
+      { name: 'Sparkles', label: 'Kreativitas', tags: ['kreatif', 'bintang', 'magis', 'sparkles', 'magic'], colorClass: 'bg-yellow-400' },
+      { name: 'Lightbulb', label: 'Ide Cerdas', tags: ['ide', 'lampu', 'pikir', 'idea', 'bulb'], colorClass: 'bg-amber-400' },
+      { name: 'Book', label: 'Buku Tertutup', tags: ['buku', 'pelajaran', 'kitab', 'book', 'studi'], colorClass: 'bg-indigo-600' },
+      { name: 'Library', label: 'Rak Buku', tags: ['perpustakaan', 'rak', 'baca', 'library', 'bookshelf'], colorClass: 'bg-violet-600' },
+      { name: 'Notebook', label: 'Buku Catatan', tags: ['buku', 'catat', 'tulis', 'notes', 'notebook'], colorClass: 'bg-blue-500' },
+      { name: 'Calculator', label: 'Kalkulator', tags: ['matematika', 'hitung', 'angka', 'calculator', 'math'], colorClass: 'bg-neutral-700' },
+      { name: 'Microscope', label: 'Mikroskop', tags: ['sains', 'lab', 'penelitian', 'microscope', 'science', 'biologi'], colorClass: 'bg-cyan-600' },
+      { name: 'Globe', label: 'Bola Dunia', tags: ['bumi', 'peta', 'geografi', 'globe', 'dunia', 'ips'], colorClass: 'bg-sky-600' },
+      { name: 'Languages', label: 'Multi Bahasa', tags: ['bahasa', 'inggris', 'terjemah', 'languages', 'translate'], colorClass: 'bg-rose-500' },
+      { name: 'FileBadge', label: 'Lencana Dokumen', tags: ['dokumen', 'ijazah', 'lencana', 'sk', 'file', 'badge'], colorClass: 'bg-blue-700' },
+      { name: 'Backpack', label: 'Tas Sekolah', tags: ['tas', 'ransel', 'sekolah', 'backpack', 'bag'], colorClass: 'bg-orange-500' },
+    ]
+  },
+  {
+    category: 'Fasilitas & Penunjang',
+    items: [
+      { name: 'Building', label: 'Gedung', tags: ['ruangan', 'kelas', 'gedung', 'building'], colorClass: 'bg-slate-500' },
+      { name: 'Laptop', label: 'Komputer', tags: ['lab', 'komputer', 'laptop', 'it', 'tech', 'ict'], colorClass: 'bg-blue-500' },
+      { name: 'Tablet', label: 'Tablet', tags: ['gawai', 'it', 'tablet', 'screen', 'ipad'], colorClass: 'bg-cyan-500' },
+      { name: 'Wifi', label: 'Internet', tags: ['wifi', 'sinyal', 'internet', 'network', 'hotspot'], colorClass: 'bg-sky-400' },
+      { name: 'Wind', label: 'AC / Angin', tags: ['ac', 'udara', 'dingin', 'kipas', 'wind', 'cooler'], colorClass: 'bg-cyan-400' },
+      { name: 'Monitor', label: 'Layar TV', tags: ['layar', 'tv', 'monitor', 'display', 'proyektor'], colorClass: 'bg-slate-600' },
+      { name: 'Bed', label: 'Tempat Tidur', tags: ['uks', 'tidur', 'kasur', 'bed', 'rest', 'klinik'], colorClass: 'bg-emerald-500' },
+      { name: 'TreePine', label: 'Taman Hijau', tags: ['pohon', 'taman', 'hijau', 'pinus', 'tree', 'kebun'], colorClass: 'bg-emerald-600' },
+      { name: 'ChefHat', label: 'Kantin Kuliner', tags: ['kantin', 'makan', 'koki', 'chef', 'food', 'jajan'], colorClass: 'bg-orange-500' },
+      { name: 'Printer', label: 'Mesin Cetak', tags: ['cetak', 'kertas', 'printer', 'copy', 'fotokopi'], colorClass: 'bg-slate-400' },
+      { name: 'Tv', label: 'Televisi', tags: ['tv', 'layar', 'video', 'television'], colorClass: 'bg-red-500' },
+      { name: 'Database', label: 'Pusat Data', tags: ['server', 'data', 'it', 'database'], colorClass: 'bg-zinc-600' },
+      { name: 'Shield', label: 'Keamanan / Satpam', tags: ['satpam', 'aman', 'pos', 'shield', 'security'], colorClass: 'bg-indigo-700' },
+      { name: 'Key', label: 'Kunci Ruangan', tags: ['kunci', 'loker', 'pintu', 'key'], colorClass: 'bg-amber-400' },
+      { name: 'Utensils', label: 'Alat Makan', tags: ['sendok', 'garpu', 'makan', 'piring', 'utensils'], colorClass: 'bg-amber-600' },
+      { name: 'Coffee', label: 'Ruang Guru / Kopi', tags: ['kopi', 'teh', 'guru', 'istirahat', 'coffee', 'tea'], colorClass: 'bg-yellow-800' },
+      { name: 'Trash2', label: 'Tempat Sampah', tags: ['sampah', 'bersih', 'buang', 'trash', 'dustbin'], colorClass: 'bg-rose-600' },
+      { name: 'Car', label: 'Parkir Mobil', tags: ['mobil', 'parkir', 'kendaraan', 'car'], colorClass: 'bg-blue-600' },
+      { name: 'Briefcase', label: 'Kantor Guru', tags: ['kantor', 'tas', 'kerja', 'briefcase', 'office'], colorClass: 'bg-neutral-600' },
+    ]
+  },
+  {
+    category: 'Aktivitas & Karakter',
+    items: [
+      { name: 'Flame', label: 'Semangat', tags: ['api', 'semangat', 'pramuka', 'flame', 'fire'], colorClass: 'bg-red-500' },
+      { name: 'Bike', label: 'Olahraga', tags: ['sepeda', 'olahraga', 'sehat', 'bike', 'sport'], colorClass: 'bg-emerald-500' },
+      { name: 'Dumbbell', label: 'Kebugaran', tags: ['gym', 'olahraga', 'otot', 'dumbbell', 'fitness'], colorClass: 'bg-slate-700' },
+      { name: 'Music', label: 'Seni Musik', tags: ['musik', 'lagu', 'rebana', 'music', 'song', 'pianika'], colorClass: 'bg-violet-500' },
+      { name: 'Mic', label: 'Pidato / Paduan', tags: ['suara', 'mic', 'paduan', 'singing', 'speak', 'karaoke'], colorClass: 'bg-rose-500' },
+      { name: 'Camera', label: 'Fotografi', tags: ['foto', 'kamera', 'dokumentasi', 'camera'], colorClass: 'bg-neutral-600' },
+      { name: 'Puzzle', label: 'Kerjasama', tags: ['game', 'puzzle', 'pikir', 'logika', 'team', 'kelompok'], colorClass: 'bg-orange-500' },
+      { name: 'Target', label: 'Fokus Target', tags: ['panah', 'target', 'fokus', 'goal', 'panahan'], colorClass: 'bg-rose-600' },
+      { name: 'Tent', label: 'Perkemahan', tags: ['pramuka', 'kemah', 'tenda', 'tent', 'camp', 'persami'], colorClass: 'bg-amber-600' },
+      { name: 'Activity', label: 'Kesehatan UKS', tags: ['jantung', 'uks', 'sehat', 'activity', 'pulse'], colorClass: 'bg-red-500' },
+      { name: 'Stethoscope', label: 'Dokter Kecil', tags: ['uks', 'dokter', 'obat', 'stethoscope', 'sakit'], colorClass: 'bg-rose-500' },
+      { name: 'Swords', label: 'Bela Diri / Silat', tags: ['silat', 'pencak', 'bela diri', 'pedang', 'swords', 'martial'], colorClass: 'bg-red-700' },
+      { name: 'UserCheck', label: 'Absensi / Disiplin', tags: ['absen', 'kehadiran', 'disiplin', 'murid', 'attendance'], colorClass: 'bg-teal-500' },
+      { name: 'Footprints', label: 'Penjelajahan', tags: ['kaki', 'jalan', 'pramuka', 'outdoor', 'footprints'], colorClass: 'bg-yellow-600' },
+      { name: 'Hourglass', label: 'Waktu / Disiplin', tags: ['waktu', 'jam', 'pasir', 'hourglass'], colorClass: 'bg-zinc-500' },
+      { name: 'Flag', label: 'Upacara Bendera', tags: ['bendera', 'upacara', 'flag', 'paskibra'], colorClass: 'bg-red-600' },
+      { name: 'Trees', label: 'Adiwiyata', tags: ['adiwiyata', 'hijau', 'pohon', 'lingkungan', 'trees'], colorClass: 'bg-green-600' },
+      { name: 'Gamepad2', label: 'E-Sports', tags: ['game', 'komputer', 'main', 'gamepad', 'ps'], colorClass: 'bg-pink-600' },
+      { name: 'Brush', label: 'Melukis', tags: ['gambar', 'kuas', 'lukis', 'brush', 'art'], colorClass: 'bg-purple-600' },
+    ]
+  },
+  {
+    category: 'Sosial & Komunikasi',
+    items: [
+      { name: 'Users', label: 'Komunitas', tags: ['guru', 'murid', 'orangtua', 'users', 'people', 'siswa'], colorClass: 'bg-blue-500' },
+      { name: 'Heart', label: 'Kasih Sayang', tags: ['cinta', 'kasih', 'peduli', 'heart', 'love', 'karakter'], colorClass: 'bg-rose-500' },
+      { name: 'Smile', label: 'Karakter Sopan', tags: ['senyum', 'ramah', 'sopan', 'smile', 'happy', 'karakter'], colorClass: 'bg-yellow-500' },
+      { name: 'HeartHandshake', label: 'Budi Pekerti', tags: ['jabat', 'damai', 'pekerti', 'handshake', 'komite'], colorClass: 'bg-indigo-500' },
+      { name: 'MessageSquare', label: 'Konsultasi', tags: ['chat', 'tanya', 'komentar', 'message', 'hubungi'], colorClass: 'bg-teal-500' },
+      { name: 'Mail', label: 'Surat Elektronik', tags: ['surel', 'email', 'pesan', 'mail', 'surat'], colorClass: 'bg-blue-400' },
+      { name: 'Phone', label: 'Hubungi Telepon', tags: ['telp', 'wa', 'kontak', 'phone', 'whatsapp'], colorClass: 'bg-emerald-400' },
+      { name: 'MapPin', label: 'Lokasi Peta', tags: ['alamat', 'peta', 'lokasi', 'map', 'pin', 'jalan'], colorClass: 'bg-red-400' },
+      { name: 'Share2', label: 'Bagikan', tags: ['share', 'bagikan', 'sosmed'], colorClass: 'bg-sky-500' },
+      { name: 'Instagram', label: 'Instagram', tags: ['ig', 'instagram', 'sosmed'], colorClass: 'bg-pink-600' },
+      { name: 'Youtube', label: 'YouTube', tags: ['yt', 'youtube', 'video'], colorClass: 'bg-red-600' },
+      { name: 'Facebook', label: 'Facebook', tags: ['fb', 'facebook', 'sosmed'], colorClass: 'bg-blue-700' },
+      { name: 'Globe2', label: 'Situs Web', tags: ['web', 'situs', 'online', 'website', 'globe'], colorClass: 'bg-emerald-500' },
+      { name: 'Rss', label: 'Berita / Feed', tags: ['berita', 'kabar', 'rss', 'pengumuman'], colorClass: 'bg-orange-500' },
+      { name: 'Send', label: 'Kirim Pesan', tags: ['kirim', 'pesan', 'telegram', 'send'], colorClass: 'bg-sky-500' },
+      { name: 'Megaphone', label: 'Pengumuman', tags: ['info', 'pengumuman', 'suara', 'megaphone', 'pemberitahuan'], colorClass: 'bg-amber-500' },
+      { name: 'Bell', label: 'Bel Sekolah', tags: ['bel', 'lonceng', 'alarm', 'notif', 'bell'], colorClass: 'bg-amber-400' },
+    ]
+  }
+];
