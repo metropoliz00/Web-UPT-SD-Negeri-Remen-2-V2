@@ -1,0 +1,531 @@
+{
+  "schoolName": "UPT SD Negeri Remen 2",
+  "npsn": "20504759",
+  "logoUrl": "https://www.image2url.com/r2/default/images/1782751130623-046f4c95-a707-4464-a4cc-fa54f78c59e9.png",
+  "headmasterName": "Nurhariadji, S.Pd",
+  "headmasterTitle": "Kepala UPT SD Negeri Remen 2",
+  "headmasterSpeech": "Assalamu'alaikum Warahmatullahi Wabarakatuh,\n\nSelamat datang di website resmi UPT SD Negeri Remen 2 Tuban. Di era transformasi digital 2026 ini, kami berkomitmen untuk mewujudkan lembaga pendidikan dasar yang unggul berbasis teknologi, literasi, numerasi, serta penanaman karakter mulia berlandaskan 8 Dimensi Profil Lulusan.\n\nSebagai sekolah dasar modern, kami mengintegrasikan teknologi informasi di dalam pembelajaran harian demi membekali peserta didik dengan kecakapan abad ke-21. Mulai dari Smart Classroom, program literasi digital, hingga pengenalan coding dan AI sederhana yang disesuaikan untuk siswa sekolah dasar. Namun, prestasi akademis bukanlah satu-satunya tujuan. Kami senantiasa meyakini bahwa pondasi akhlak yang kokoh, kesadaran lingkungan (Adiwiyata), dan pengembangan minat bakat non-akademis merupakan kunci utama keberhasilan generasi masa depan.\n\nWebsite ini hadir sebagai media komunikasi interaktif, jembatan silaturahmi, sekaligus pusat informasi bagi seluruh orang tua, siswa, alumni, dan masyarakat luas. Mari bersama-sama bersinergi mewujudkan generasi cerdas, berkarakter, dan berprestasi.\n\nWassalamu'alaikum Warahmatullahi Wabarakatuh.",
+  "headmasterPhoto": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600",
+  "heroTitle": "Mewujudkan Generasi Cerdas, Berkarakter dan Berprestasi",
+  "heroSubtitle": "Sekolah Unggul Berbasis Teknologi, Literasi, Numerasi dan Pendidikan Karakter di Kabupaten Tuban",
+  "heroVideoUrlOrImage": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1920",
+  "visi": "Terwujudnya Peserta Didik yang Berakhlak Mulia, Cerdas, Terampil, Berkarakter, dan Berprestasi Berlandaskan Profil Pelajar Pancasila.",
+  "misi": "1. Menanamkan nilai-nilai religius dan akhlak mulia dalam kehidupan sehari-hari.\n2. Menyelenggarakan pembelajaran yang aktif, kreatif, efektif, dan menyenangkan.\n3. Mengembangkan potensi bakat dan minat siswa secara optimal.\n4. Membangun lingkungan sekolah yang aman, nyaman, dan humanis.\n5. Meningkatkan kompetensi guru dan tenaga kependidikan secara berkelanjutan.",
+  "tujuan": "1. Menghasilkan lulusan yang taat beribadah dan berakhlak mulia.\n2. Mencapai prestasi akademik dan non-akademik di tingkat kabupaten maupun provinsi.\n3. Mewujudkan budaya literasi dan numerasi yang kuat di lingkungan sekolah.\n4. Menjalin kemitraan yang harmonis antara sekolah, orang tua, dan masyarakat.",
+  "stats": [
+    {
+      "id": "stat_1",
+      "label": "Siswa Aktif",
+      "value": 540,
+      "suffix": "+"
+    },
+    {
+      "id": "stat_2",
+      "label": "Guru Profesional",
+      "value": 35
+    },
+    {
+      "id": "stat_3",
+      "label": "Kelas & Lab",
+      "value": 15
+    },
+    {
+      "id": "stat_4",
+      "label": "Prestasi Juara",
+      "value": 20,
+      "suffix": "+"
+    }
+  ],
+  "historyTimeline": [
+    {
+      "id": "hist_1",
+      "year": "1985",
+      "title": "Pendirian Sekolah",
+      "description": "UPT SD Negeri Remen 2 didirikan secara resmi untuk melayani pendidikan dasar bagi masyarakat Desa Remen, Kecamatan Jenu, Tuban."
+    },
+    {
+      "id": "hist_2",
+      "year": "2012",
+      "title": "Sertifikasi Akreditasi A",
+      "description": "Meraih predikat Akreditasi 'A' pertama kali berkat peningkatan mutu pengajaran dan sarana prasarana yang signifikan."
+    },
+    {
+      "id": "hist_3",
+      "year": "2018",
+      "title": "Rintisan Sekolah Adiwiyata",
+      "description": "Memulai pelestarian lingkungan hidup terpadu dan berhasil dianugerahi predikat Sekolah Adiwiyata Tingkat Kabupaten Tuban."
+    },
+    {
+      "id": "hist_4",
+      "year": "2024",
+      "title": "Sekolah Berbasis Literasi Digital",
+      "description": "Instalasi Smart Classroom, peluncuran Perpustakaan Digital, serta inisiasi klub robotik dan coding dasar bagi siswa."
+    },
+    {
+      "id": "hist_5",
+      "year": "2026",
+      "title": "Sekolah Unggul Berbasis Teknologi",
+      "description": "Implementasi penuh Kurikulum Merdeka dengan pengayaan kecerdasan buatan (AI) ramah anak dan e-Learning terintegrasi."
+    }
+  ],
+  "keunggulan": [
+    {
+      "id": "keung_1",
+      "title": "Guru Profesional",
+      "description": "Didukung oleh tenaga pendidik bersertifikasi profesional, ramah anak, dan terlatih dalam metode pengajaran berbasis IT.",
+      "iconName": "Award"
+    },
+    {
+      "id": "keung_2",
+      "title": "Kurikulum Merdeka",
+      "description": "Pembelajaran terdiferensiasi yang memfasilitasi setiap keunikan minat, bakat, serta kecepatan belajar anak secara dinamis.",
+      "iconName": "BookOpen"
+    },
+    {
+      "id": "keung_3",
+      "title": "Smart Classroom",
+      "description": "Ruang kelas modern yang dilengkapi proyektor interaktif, koneksi Wi-Fi kencang, dan tablet edukatif untuk penunjang riset mandiri.",
+      "iconName": "Monitor"
+    },
+    {
+      "id": "keung_4",
+      "title": "Perpustakaan Digital",
+      "description": "Akses ke ribuan e-book, jurnal sains anak, audio-book, dan video edukasi yang bisa diakses kapan saja dan di mana saja.",
+      "iconName": "Library"
+    },
+    {
+      "id": "keung_5",
+      "title": "Ekstrakurikuler Lengkap",
+      "description": "Dari Pramuka, Drumband, hingga coding robotik, dirancang untuk mengasah soft-skills serta kemandirian sosial siswa.",
+      "iconName": "Sparkles"
+    },
+    {
+      "id": "keung_6",
+      "title": "Lingkungan Nyaman",
+      "description": "Sekolah Adiwiyata yang rindang, bersih, asri, berfasilitas toilet higienis, serta zona bermain aman ramah anak.",
+      "iconName": "Leaf"
+    }
+  ],
+  "programs": [
+    {
+      "id": "prog_1",
+      "title": "Literasi & Numerasi Digital",
+      "description": "Mengasah kemampuan membaca kritis dan berhitung logis menggunakan aplikasi gamifikasi menyenangkan di Smart Classroom.",
+      "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800",
+      "category": "Kecakapan Inti"
+    },
+    {
+      "id": "prog_2",
+      "title": "Coding & AI Dasar (KidCoder)",
+      "description": "Pengenalan pemrograman blok (Scratch Jr) dan konsep Kecerdasan Buatan (AI) dasar untuk memicu pemecahan masalah kreatif.",
+      "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800",
+      "category": "Teknologi"
+    },
+    {
+      "id": "prog_3",
+      "title": "Tahfidz Al-Qur'an & Akhlakul Karimah",
+      "description": "Bimbingan menghafal Al-Qur'an juz 30 dengan tartil, dikombinasikan dengan pembiasaan karakter luhur sehari-hari.",
+      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&q=80&w=800",
+      "category": "Karakter"
+    },
+    {
+      "id": "prog_4",
+      "title": "Sains & Robotics Club",
+      "description": "Eksperimen sains sederhana mingguan dan perakitan robot mini dari modul sensor untuk mengasah cara berpikir saintifik.",
+      "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800",
+      "category": "Sains"
+    },
+    {
+      "id": "prog_5",
+      "title": "English Speaking Club",
+      "description": "Pembelajaran bahasa Inggris komunikatif melalui lagu, drama, bercerita, dan permainan asyik tanpa rasa takut bersalah.",
+      "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800",
+      "category": "Bahasa"
+    },
+    {
+      "id": "prog_6",
+      "title": "Kewirausahaan Cilik",
+      "description": "Pameran karya tahunan (Market Day) di mana anak-anak belajar dasar-dasar mengelola uang, bernegosiasi, dan bekerja sama.",
+      "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800",
+      "category": "Kreativitas"
+    }
+  ],
+  "prestasi": [
+    {
+      "id": "pres_1",
+      "title": "Juara 1 Lomba Coding Pemula Tingkat Kabupaten Tuban",
+      "category": "Akademik",
+      "date": "Februari 2026",
+      "achievement": "Medali Emas & Juara Utama",
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800",
+      "description": "Tim KidCoder SD Negeri Remen 2 memenangkan peringkat pertama dalam ajang visual programming (Scratch) dengan membawakan game simulasi Adiwiyata interaktif."
+    },
+    {
+      "id": "pres_2",
+      "title": "Juara 2 Olimpiade Sains Nasional (OSN) Matematika",
+      "category": "Akademik",
+      "date": "Mei 2025",
+      "achievement": "Peringkat Perak",
+      "image": "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800",
+      "description": "Ananda Rayyan Pratama, siswa kelas 5, mengukir prestasi gemilang dengan membawa pulang medali perak dalam OSN Matematika Tingkat Provinsi Jawa Timur."
+    },
+    {
+      "id": "pres_3",
+      "title": "Juara 1 Pencak Silat Anak Piala Bupati Tuban",
+      "category": "Non Akademik",
+      "date": "Maret 2026",
+      "achievement": "Medali Emas",
+      "image": "https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=800",
+      "description": "Siti Rahmawati meraih podium tertinggi pada kategori Seni Tunggal Putri Pencak Silat Anak se-Karesidenan Bojonegoro."
+    },
+    {
+      "id": "pres_4",
+      "title": "Harapan 1 Drumband Kreatif Festival Bumi Wali",
+      "category": "Non Akademik",
+      "date": "Oktober 2025",
+      "achievement": "Piala Penghargaan Utama",
+      "image": "https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&q=80&w=800",
+      "description": "Grup Drumband 'Gita Swara Remen' memukau juri dengan aransemen lagu daerah yang dipadu dengan tarian koreografi kolosal."
+    }
+  ],
+  "guru": [
+    {
+      "id": "guru_1",
+      "name": "Nurhariadji, S.Pd",
+      "role": "Kepala UPT SD Negeri Remen 2",
+      "subject": "Manajemen & Kebijakan Sekolah",
+      "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=600",
+      "socials": {
+        "instagram": "nurhariadji_spd",
+        "email": "nurhariadji@gmail.com"
+      }
+    },
+    {
+      "id": "guru_2",
+      "name": "Dra. Sri Wahyuni",
+      "role": "Wali Kelas 6 & Koordinator Kurikulum",
+      "subject": "Sains & Pendidikan Pancasila",
+      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=600",
+      "socials": {
+        "instagram": "sri_wahyuni_tuban",
+        "facebook": "Sri Wahyuni Tuban"
+      }
+    },
+    {
+      "id": "guru_3",
+      "name": "Ahmad Fauzi, S.Pd, Gr",
+      "role": "Guru Kelas 4 & Pembina Coding-AI",
+      "subject": "Matematika & Literasi Digital",
+      "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=600",
+      "socials": {
+        "instagram": "fauzi_kidcoder",
+        "email": "fauzi@gmail.com"
+      }
+    },
+    {
+      "id": "guru_4",
+      "name": "Rina Kartika, S.Pd",
+      "role": "Guru Agama & Koordinator Tahfidz",
+      "subject": "Pendidikan Agama Islam",
+      "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=600",
+      "socials": {
+        "email": "rinakartika@gmail.com"
+      }
+    },
+    {
+      "id": "guru_5",
+      "name": "Budi Santoso, S.Or",
+      "role": "Guru PJOK & Pembina Pencak Silat",
+      "subject": "Olahraga & Kesehatan",
+      "photo": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600",
+      "socials": {
+        "instagram": "budi_olahraga"
+      }
+    }
+  ],
+  "galeri": [
+    {
+      "id": "gal_1",
+      "title": "Siswa Menggunakan Tablet di Smart Classroom",
+      "category": "Pembelajaran",
+      "url": "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      "id": "gal_2",
+      "title": "Penyerahan Medali Emas Lomba Coding Tuban",
+      "category": "Prestasi",
+      "url": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      "id": "gal_3",
+      "title": "Kegiatan Penanaman Pohon Bersama Adiwiyata",
+      "category": "Kegiatan",
+      "url": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      "id": "gal_4",
+      "title": "Fasilitas Lab Komputer & Perpustakaan Baru",
+      "category": "Sarana",
+      "url": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      "id": "gal_5",
+      "title": "Upacara Peringatan Hari Pendidikan Nasional",
+      "category": "Kegiatan",
+      "url": "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      "id": "gal_6",
+      "title": "Latihan Drumband Kolosal Sore Hari",
+      "category": "Kegiatan",
+      "url": "https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&q=80&w=800"
+    }
+  ],
+  "berita": [
+    {
+      "id": "news_1",
+      "title": "UPT SD Negeri Remen 2 Tuban Luncurkan Smart Classroom Pertama",
+      "category": "Akademik",
+      "summary": "SDN Remen 2 resmi merilis ruang kelas masa depan dengan dukungan papan tulis layar sentuh interaktif dan tablet pintar untuk siswa guna menopang Kurikulum Merdeka.",
+      "content": "Tuban, Berita Sekolah - Dalam rangka mempercepat akselerasi digitalisasi pendidikan dasar, UPT SD Negeri Remen 2 meluncurkan fasilitas 'Smart Classroom' terpadu. Kepala UPT SD Negeri Remen 2 Nurhariadji, S.Pd menyampaikan bahwa fasilitas ini bertujuan mengikis kesenjangan teknologi sejak dini.\n\nSetiap meja belajar siswa kini terintegrasi dengan pengisi daya nirkabel, tablet belajar bermuatan materi literasi dan numerasi digital, serta sistem papan tulis interaktif yang terkoneksi langsung dengan AI asisten pendidik. Proses pembelajaran kini jauh lebih interaktif, menyenangkan, dan visual-friendly.",
+      "date": "25 Juni 2026",
+      "thumbnail": "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800",
+      "tags": [
+        "SmartClass",
+        "KurikulumMerdeka",
+        "TubanDigital"
+      ]
+    },
+    {
+      "id": "news_2",
+      "title": "Kerja Bakti Akbar Menuju Sekolah Adiwiyata Mandiri 2026",
+      "category": "Lingkungan",
+      "summary": "Sinergi hebat antara wali murid, guru, dan para kader cilik Adiwiyata bahu membahu merawat keasrian taman herbal sekolah dan instalasi resapan air.",
+      "content": "Jenu, Tuban - Mengusung konsep kesadaran ekologis berkelanjutan, UPT SD Negeri Remen 2 mengadakan aksi gotong-royong revitalisasi taman sekolah. Tidak hanya membersihkan sampah, aksi kali ini difokuskan pada penanaman 200 bibit tanaman obat keluarga (TOGA) dan pembuatan lobang biopori baru di sekitar area lapangan basket.\n\nPartisipasi aktif komite sekolah membuktikan kepedulian tinggi masyarakat sekitar dalam menjaga kestabilan lingkungan belajar anak.",
+      "date": "14 Juni 2026",
+      "thumbnail": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800",
+      "tags": [
+        "Adiwiyata",
+        "GoGreen",
+        "TubanBumiWali"
+      ]
+    },
+    {
+      "id": "news_3",
+      "title": "Pendaftaran SMPB UPT SD Negeri Remen 2 Tahun Ajaran 2026/2027 Resmi Dibuka",
+      "category": "Pengumuman",
+      "summary": "Kuota penerimaan siswa baru tahun ini terbatas hanya untuk 120 siswa dalam 4 rombongan belajar. Simak jalur masuk, syarat, dan jadwal lengkap pendaftaran online.",
+      "content": "Seleksi Masuk Peserta Didik Baru (SMPB) UPT SD Negeri Remen 2 Tuban resmi dibuka per 1 Juni 2026. Sebagai sekolah dengan peminat tertinggi di Kecamatan Jenu, panitia SMPB mengimbau agar para orang tua segera melakukan pra-registrasi online melalui portal resmi kami.\n\nPendaftaran melingkupi Jalur Zonasi, Afirmasi, serta Perpindahan Tugas Orang Tua. Hubungi Helpdesk via WhatsApp di halaman kontak jika membutuhkan panduan.",
+      "date": "01 Juni 2026",
+      "thumbnail": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800",
+      "tags": [
+        "SMPB2026",
+        "SiswaBaru",
+        "PendaftaranSD"
+      ]
+    }
+  ],
+  "testimoni": [
+    {
+      "id": "test_1",
+      "name": "Bapak Setiawan",
+      "role": "Orang Tua",
+      "relation": "Orang Tua dari Rayyan (Kelas 5)",
+      "content": "Luar biasa perkembangan anak saya sejak sekolah di SD Negeri Remen 2. Tidak hanya jago matematika, sekarang dia sudah mulai mengerti logika pemrograman dasar Scratch dan sangat bersemangat menjelaskan idenya tentang teknologi hijau.",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200"
+    },
+    {
+      "id": "test_2",
+      "name": "Fatimah Az-Zahra",
+      "role": "Alumni",
+      "relation": "Alumni Angkatan 2023",
+      "content": "Bekal literasi digital, kepercayaan diri berbahasa Inggris, dan didikan disiplin dari guru-guru SDN Remen 2 sangat terasa manfaatnya sekarang saat saya melanjutkan ke SMP Unggulan. Saya selalu kangen dengan taman asri sekolah.",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200"
+    },
+    {
+      "id": "test_3",
+      "name": "Ibu Indah Lestari",
+      "role": "Guru",
+      "relation": "Guru Kelas 2",
+      "content": "Bekerja di sini memberikan atmosfer profesional yang mendukung inovasi. Kepala sekolah sangat menghargai ide-ide kreatif guru. Kami difasilitasi berbagai pelatihan mutakhir agar terus relevan mendidik generasi Z.",
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200"
+    },
+    {
+      "id": "test_4",
+      "name": "Andi Saputra",
+      "role": "Siswa",
+      "relation": "Siswa Kelas 6",
+      "content": "Belajar di Smart Classroom seru sekali! Kami bisa kuis interaktif pakai tablet dan kalau jam istirahat perpustakaannya adem, banyak buku komik sains seru yang bisa dibaca digital atau cetak.",
+      "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=200"
+    }
+  ],
+  "ekstrakurikuler": [
+    {
+      "id": "ekstra_1",
+      "name": "Pramuka",
+      "iconName": "Compass",
+      "description": "Melatih kepanduan, kepemimpinan, kerja sama tim, cinta alam, kemandirian, dan kedisiplinan berkarakter."
+    },
+    {
+      "id": "ekstra_2",
+      "name": "Drumband",
+      "iconName": "Music",
+      "description": "Grup musik perkusi Gita Swara Remen yang mengasah harmoni, ritme, kebersamaan, dan ketepatan tempo."
+    },
+    {
+      "id": "ekstra_3",
+      "name": "Pencak Silat",
+      "iconName": "ShieldAlert",
+      "description": "Bela diri warisan budaya bangsa untuk menguatkan fisik, mental, pertahanan diri, dan akhlak ksatria."
+    },
+    {
+      "id": "ekstra_4",
+      "name": "Futsal",
+      "iconName": "Activity",
+      "description": "Olahraga bola kaki populer untuk melatih strategi, kelincahan, daya tahan fisik, dan sportivitas anak."
+    },
+    {
+      "id": "ekstra_5",
+      "name": "Klub KIR",
+      "iconName": "Atom",
+      "description": "Karya Ilmiah Remaja Cilik untuk melatih penalaran ilmiah, observasi, penelitian sains dasar, dan inovasi."
+    },
+    {
+      "id": "ekstra_6",
+      "name": "Seni Tari",
+      "iconName": "Flame",
+      "description": "Pelestarian tari tradisional khas Jawa Timur dan tari kreasi guna menumbuhkan kecintaan seni budaya."
+    },
+    {
+      "id": "ekstra_7",
+      "name": "PMR Mula",
+      "iconName": "Heart",
+      "description": "Palang Merah Remaja tingkat dasar untuk melatih kepedulian sosial, kesehatan diri, dan pertolongan pertama."
+    },
+    {
+      "id": "ekstra_8",
+      "name": "Voli Cilik",
+      "iconName": "Tv",
+      "description": "Mengasah ketangkasan motorik kasar, operan taktis, lompatan, serta kebersamaan regu voli sekolah."
+    }
+  ],
+  "ppdb": {
+    "status": "Open",
+    "kuota": 28,
+    "kuotaTerisi": 19,
+    "jadwal": [
+      {
+        "phase": "Gelombang 1 (Zonasi & Prestasi)",
+        "date": "1 - 20 Juni 2026"
+      },
+      {
+        "phase": "Gelombang 2 (Afirmasi & Reguler)",
+        "date": "22 Juni - 10 Juli 2026"
+      },
+      {
+        "phase": "Pengumuman Hasil Seleksi",
+        "date": "15 Juli 2026"
+      },
+      {
+        "phase": "Daftar Ulang Siswa Baru",
+        "date": "17 - 20 Juli 2026"
+      }
+    ],
+    "persyaratan": [
+      "Mengisi formulir pendaftaran online secara lengkap.",
+      "Usia minimal 6 tahun pada 1 Juli 2026.",
+      "Scan/Fotokopi Akta Kelahiran asli.",
+      "Scan/Fotokopi Kartu Keluarga (KK) asli.",
+      "Scan/Fotokopi KTP kedua orang tua/wali.",
+      "Pasfoto berwarna terbaru anak ukuran 3x4 (2 lembar)."
+    ],
+    "alur": [
+      {
+        "step": 1,
+        "title": "Pra-Registrasi Online",
+        "desc": "Mengisi data diri singkat anak dan mengunggah dokumen administrasi dasar lewat web SMPB."
+      },
+      {
+        "step": 2,
+        "title": "Verifikasi Berkas",
+        "desc": "Panitia SMPB memverifikasi kecocokan dokumen asli yang dikirimkan secara berkala."
+      },
+      {
+        "step": 3,
+        "title": "Pemetaan Minat Bakat",
+        "desc": "Observasi ramah anak untuk memetakan kesiapan belajar, gaya serap, serta kesehatan dasar siswa."
+      },
+      {
+        "step": 4,
+        "title": "Pengumuman & Daftar Ulang",
+        "desc": "Siswa yang lolos seleksi melengkapi berkas fisik langsung di sekolah serta mengambil seragam sekolah."
+      }
+    ],
+    "countdownDate": "2026-07-20T23:59:59"
+  },
+  "faq": [
+    {
+      "id": "faq_1",
+      "question": "Apakah UPT SD Negeri Remen 2 memungut biaya bulanan (SPP)?",
+      "answer": "Tidak. Sebagai Sekolah Negeri di bawah naungan Kemendikbudristek, SD Negeri Remen 2 dibebaskan dari biaya bulanan/SPP (Gratis) berkat tunjangan dana BOS (Bantuan Operasional Sekolah)."
+    },
+    {
+      "id": "faq_2",
+      "question": "Berapakah usia minimum anak untuk mendaftar kelas 1?",
+      "answer": "Sesuai aturan Kemendikbud, usia minimal adalah 6 tahun pada tanggal 1 Juli tahun berjalan. Anak berusia 7 tahun diprioritaskan penuh dalam zonasi."
+    },
+    {
+      "id": "faq_3",
+      "question": "Apakah ada program komputer atau internet di sekolah ini?",
+      "answer": "Ya, kami memiliki laboratorium komputer terpadu dan fasilitas Smart Classroom yang memanfaatkan tablet penunjang materi pelajaran, kuis interaktif, dan pemrograman dasar untuk melatih literasi digital anak sejak dini."
+    },
+    {
+      "id": "faq_4",
+      "question": "Bagaimana dengan kualitas kebersihan toilet dan kantin sekolah?",
+      "answer": "Sebagai pemegang predikat Sekolah Adiwiyata, kebersihan adalah prioritas utama kami. Toilet sekolah dibersihkan berkala setiap hari dan kantin sekolah disupervisi ketat untuk menyediakan makanan higienis tanpa pewarna/pengawet berbahaya."
+    },
+    {
+      "id": "faq_5",
+      "question": "Apakah sekolah ini menyediakan kegiatan keagamaan?",
+      "answer": "Tentu. Setiap hari diawali dengan pembacaan Juz Amma bersama, sholat dhuha berjamaah di mushola, bimbingan Tahfidz Al-Qur'an teratur, serta kegiatan kerohanian peringatan hari besar keagamaan nasional."
+    },
+    {
+      "id": "faq_6",
+      "question": "Apakah kurikulum yang digunakan saat ini?",
+      "answer": "Kami menerapkan Kurikulum Merdeka yang disempurnakan. Kurikulum ini fokus pada materi esensial, pengembangan karakter 8 Dimensi Profil Lulusan, dan pembelajaran kolaboratif berbasis projek (P5)."
+    },
+    {
+      "id": "faq_7",
+      "question": "Bagaimana penanganan bagi siswa yang lambat membaca?",
+      "answer": "Kami menyediakan jam remedial khusus bimbingan literasi intensif di luar jam pelajaran kelas, di mana guru kelas melakukan pendekatan personal menggunakan kartu kata edukatif hingga siswa mahir membaca."
+    },
+    {
+      "id": "faq_8",
+      "question": "Apakah ada transportasi antar jemput sekolah?",
+      "answer": "Saat ini sekolah tidak mengelola bus jemputan resmi. Namun, terdapat paguyuban orang tua yang mengoordinasikan ojek/kendaraan antar jemput lingkungan desa setempat dengan aman."
+    },
+    {
+      "id": "faq_9",
+      "question": "Apa saja prestasi unggulan non-akademis sekolah?",
+      "answer": "Di antaranya adalah Juara Pencak Silat Tingkat Kabupaten, Juara Lomba Coding visual, serta penampilan Drumband Gita Swara Remen yang langganan mengisi parade kepemudaan."
+    },
+    {
+      "id": "faq_10",
+      "question": "Bagaimana cara berkomunikasi dengan wali kelas?",
+      "answer": "Sekolah membentuk grup WhatsApp resmi Paguyuban Kelas untuk koordinasi info harian. Selain itu, orang tua dapat menjadwalkan konsultasi tatap muka langsung di hari kerja dengan wali kelas."
+    }
+  ],
+  "contact": {
+    "alamat": "Desa Remen kecamatan Jenu Kabupaten Tuban, Jawa Timur, Indonesia",
+    "telepon": "+62 812-3456-7890",
+    "email": "sdnremen@gmail.com",
+    "jamOperasional": "Senin - Sabtu: 07:00 - 13:00 WIB",
+    "mapsEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.5428416049285!2d111.99650077587053!3d-6.825316493172605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e77bf94998ee67b%3A0x868c222ff433bdfc!2sUPT%20SDN%20REMEN%202!5e0!3m2!1sid!2sid!4v1719600000000!5m2!1sid!2sid",
+    "socials": {
+      "facebook": "https://facebook.com/sdnremen2",
+      "instagram": "https://instagram.com/sdnremen2_official",
+      "tiktok": "https://tiktok.com/@sdnremen2",
+      "youtube": "https://youtube.com/c/sdnremen2tuban"
+    }
+  }
+}

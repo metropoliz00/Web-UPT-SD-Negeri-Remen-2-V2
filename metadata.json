@@ -1,0 +1,10 @@
+{
+  "name": "Website UPT SD Negeri Remen 2 V2",
+  "description": "Website sekolah dengan desin profesioanl dan moderen!",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
