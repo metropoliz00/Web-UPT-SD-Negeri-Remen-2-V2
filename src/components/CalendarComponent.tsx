@@ -212,33 +212,88 @@ export default function CalendarComponent({ lang, agenda: initialAgenda }: { lan
                   setIsAdding(true);
                 }
               }}
-              className={`relative h-16 sm:h-24 p-1 rounded-lg border transition-all duration-300 cursor-pointer group 
+              className={`relative h-20 sm:h-28 p-1.5 rounded-xl border transition-all duration-300 cursor-pointer group flex flex-col justify-between
                 ${!isCurrentMonth ? 'opacity-30' : ''}
-                ${isSelected ? 'bg-brand-primary/10 border-brand-primary ring-2 ring-brand-primary/20' : 'bg-slate-50 dark:bg-slate-700/30 border-slate-100 dark:border-slate-700 hover:border-brand-primary/50'}
+                ${isSelected 
+                  ? 'bg-brand-primary/15 border-brand-primary ring-2 ring-brand-primary/25' 
+                  : isHoliday 
+                    ? 'bg-rose-50 dark:bg-rose-950/30 border-rose-200 dark:border-rose-900/40 hover:border-rose-400'
+                    : dayAgenda.length > 0
+                      ? 'bg-indigo-50 dark:bg-indigo-950/30 border-indigo-200 dark:border-indigo-900/40 hover:border-indigo-400'
+                      : isSunday
+                        ? 'bg-red-50/20 dark:bg-red-950/5 border-slate-100 dark:border-slate-700/50 hover:border-brand-primary/40'
+                        : 'bg-slate-50 dark:bg-slate-700/20 border-slate-100 dark:border-slate-700/50 hover:border-brand-primary/40'
+                }
               `}
             >
-              <span className={`text-xs sm:text-sm font-bold ${isSelected ? 'text-brand-primary' : (isHoliday || isSunday) ? 'text-red-500' : 'text-slate-800 dark:text-white'}`}>
-                {format(day, 'd')}
-              </span>
+              <div className="flex justify-between items-start w-full">
+                <span className={`text-xs sm:text-sm font-bold ${
+                  isSelected 
+                    ? 'text-brand-primary font-black' 
+                    : isHoliday 
+                      ? 'text-rose-600 dark:text-rose-400 font-extrabold' 
+                      : dayAgenda.length > 0
+                        ? 'text-indigo-600 dark:text-indigo-400 font-extrabold'
+                        : isSunday 
+                          ? 'text-red-500' 
+                          : 'text-slate-800 dark:text-white'
+                }`}>
+                  {format(day, 'd')}
+                </span>
+                
+                {/* Mobile indicators top-right */}
+                <div className="flex gap-0.5 sm:hidden">
+                  {isHoliday && <span className="h-1.5 w-1.5 rounded-full bg-rose-500 animate-pulse" />}
+                  {dayAgenda.length > 0 && <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />}
+                </div>
+              </div>
               
-              {/* Agenda Indicators */}
-              <div className="mt-1 flex flex-wrap gap-1">
-                {dayAgenda.slice(0, 3).map((item, i) => (
-                  <div key={i} className="h-1 sm:h-1.5 w-1 sm:w-1.5 rounded-full bg-brand-primary" title={item.title} />
+              {/* Agenda / Holiday Labels on Desktop */}
+              <div className="mt-1 space-y-1 hidden sm:block overflow-hidden flex-1 w-full select-none">
+                {isHoliday && (
+                  <div 
+                    className="text-[9px] leading-tight font-black bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 px-1.5 py-0.5 rounded truncate" 
+                    title={holidays.find(h => h.date === format(day, 'yyyy-MM-dd'))?.localName}
+                  >
+                    🎉 {holidays.find(h => h.date === format(day, 'yyyy-MM-dd'))?.localName}
+                  </div>
+                )}
+                {dayAgenda.slice(0, 2).map((item, i) => (
+                  <div 
+                    key={i} 
+                    className="text-[9px] leading-tight font-bold bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 px-1.5 py-0.5 rounded truncate" 
+                    title={item.title}
+                  >
+                    📌 {item.title}
+                  </div>
                 ))}
-                {dayAgenda.length > 3 && <div className="text-[8px] text-brand-primary font-bold">+{dayAgenda.length - 3}</div>}
+                {dayAgenda.length > 2 && (
+                  <div className="text-[8px] text-indigo-600 dark:text-indigo-400 font-black px-1.5">
+                    +{dayAgenda.length - 2} {lang === 'id' ? 'kegiatan' : 'more'}
+                  </div>
+                )}
               </div>
 
               {/* Hover Tooltip */}
               {(dayAgenda.length > 0 || isHoliday) && (
-                <div className="absolute z-10 hidden group-hover:block w-48 p-3 bg-white dark:bg-slate-800 shadow-2xl rounded-xl border border-slate-100 dark:border-slate-700 -top-2 left-1/2 -translate-x-1/2 -translate-y-full mb-2">
-                  {isHoliday && <p className="text-[10px] text-red-500 font-bold mb-1">{holidays.find(h => h.date === format(day, 'yyyy-MM-dd'))?.localName}</p>}
-                  {dayAgenda.map((item, i) => (
-                    <div key={i} className={i > 0 ? 'mt-2 pt-2 border-t border-slate-100 dark:border-slate-700' : ''}>
-                      <p className="text-xs font-bold text-brand-navy dark:text-white line-clamp-1">{item.title}</p>
-                      <p className="text-[10px] text-slate-500 dark:text-slate-400 line-clamp-2">{item.description}</p>
+                <div className="absolute z-20 hidden group-hover:block w-52 p-3.5 bg-white dark:bg-slate-800 shadow-2xl rounded-xl border border-slate-100 dark:border-slate-700 -top-2 left-1/2 -translate-x-1/2 -translate-y-full mb-2">
+                  {isHoliday && (
+                    <div className="mb-2 pb-1.5 border-b border-rose-100 dark:border-rose-900/30">
+                      <p className="text-[9px] text-slate-400 uppercase tracking-widest font-black">{lang === 'id' ? 'Hari Libur Nasional' : 'Public Holiday'}</p>
+                      <p className="text-xs font-bold text-rose-600 dark:text-rose-400 mt-0.5">🎉 {holidays.find(h => h.date === format(day, 'yyyy-MM-dd'))?.localName}</p>
                     </div>
-                  ))}
+                  )}
+                  {dayAgenda.length > 0 && (
+                    <div className="space-y-2">
+                      <p className="text-[9px] text-slate-400 uppercase tracking-widest font-black">{lang === 'id' ? 'Agenda Sekolah' : 'School Agenda'}</p>
+                      {dayAgenda.map((item, i) => (
+                        <div key={i} className={i > 0 ? 'pt-1.5 border-t border-slate-100 dark:border-slate-700/50' : ''}>
+                          <p className="text-xs font-bold text-brand-navy dark:text-white line-clamp-1">📌 {item.title}</p>
+                          {item.description && <p className="text-[10px] text-slate-500 dark:text-slate-400 line-clamp-2 mt-0.5">{item.description}</p>}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                   <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white dark:bg-slate-800 border-r border-b border-slate-100 dark:border-slate-700 rotate-45"></div>
                 </div>
               )}
