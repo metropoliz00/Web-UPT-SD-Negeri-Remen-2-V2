@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useCMS } from '../context/CMSContext';
+import ImageUpload from './ImageUpload';
 import { 
   X, Save, Trash, Plus, ImageIcon, Award, BookOpen, Users, HelpCircle, FileText, Settings, GraduationCap, ChevronRight, LayoutGrid, Share2, Play, MonitorPlay
 } from 'lucide-react';
@@ -151,15 +152,11 @@ export default function IntegratedCMSModal() {
                       />
                     </div>
 
-                    <div className="space-y-1.5">
-                      <label className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">URL Foto</label>
-                      <input
-                        type="text"
-                        value={item.imageUrl || ''}
-                        onChange={e => updateContentListItem('sarana', item.id, 'imageUrl', e.target.value)}
-                        className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 text-slate-600 rounded-lg focus:ring-1 focus:ring-brand-primary outline-none transition-all"
-                      />
-                    </div>
+                    <ImageUpload
+                      value={item.imageUrl || ''}
+                      onChange={val => updateContentListItem('sarana', item.id, 'imageUrl', val)}
+                      label="Foto Sarana"
+                    />
                   </div>
                 ))}
               </div>
@@ -288,15 +285,11 @@ export default function IntegratedCMSModal() {
                 </button>
               </div>
 
-              <div className="space-y-1.5">
-                <label className="text-xs text-slate-500 font-bold block">Logo Sekolah URL</label>
-                <input
-                  type="text"
-                  value={content.logoUrl || ''}
-                  onChange={e => updateContentField('logoUrl', e.target.value)}
-                  className="w-full px-4 py-3 text-sm bg-white border border-slate-200 text-slate-800 rounded-xl focus:ring-2 focus:ring-brand-primary outline-none transition-all shadow-sm"
-                />
-              </div>
+              <ImageUpload
+                value={content.logoUrl || ''}
+                onChange={val => updateContentField('logoUrl', val)}
+                label="Logo Sekolah"
+              />
 
               {/* Carousel Image Slider Editor */}
               <div className="border-t border-slate-200 pt-5 space-y-4">
@@ -320,47 +313,26 @@ export default function IntegratedCMSModal() {
 
                 <div className="space-y-4">
                   {(content.heroCarousel || []).map((url, idx) => (
-                    <div key={idx} className="p-4 bg-white border border-slate-200 rounded-2xl flex flex-col sm:flex-row gap-4 items-start relative group">
+                    <div key={idx} className="p-4 bg-white border border-slate-200 rounded-2xl relative">
                       <button
                         onClick={() => {
                           const newCarousel = (content.heroCarousel || []).filter((_, i) => i !== idx);
                           updateContentField('heroCarousel', newCarousel);
                         }}
-                        className="absolute top-4 right-4 p-1.5 bg-red-50 text-red-500 hover:bg-red-100 rounded-lg transition-colors cursor-pointer"
+                        className="absolute top-4 right-4 p-1.5 bg-red-50 text-red-500 hover:bg-red-100 rounded-lg transition-colors cursor-pointer z-10"
                         title="Hapus foto ini"
                       >
                         <Trash className="h-3.5 w-3.5" />
                       </button>
-
-                      <div className="w-full sm:w-32 h-20 bg-slate-100 rounded-lg overflow-hidden flex items-center justify-center border border-slate-200 shrink-0">
-                        {url ? (
-                          <img 
-                            src={url} 
-                            alt={`Slide ${idx + 1}`} 
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1200";
-                            }}
-                          />
-                        ) : (
-                          <ImageIcon className="h-6 w-6 text-slate-400" />
-                        )}
-                      </div>
-
-                      <div className="flex-grow w-full space-y-1.5 pr-8">
-                        <label className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block font-bold">URL Foto Slide {idx + 1}</label>
-                        <input
-                          type="text"
-                          value={url}
-                          onChange={e => {
-                            const newCarousel = [...(content.heroCarousel || [])];
-                            newCarousel[idx] = e.target.value;
-                            updateContentField('heroCarousel', newCarousel);
-                          }}
-                          placeholder="Masukkan URL foto dari Unsplash, ImgBB, dsb."
-                          className="w-full px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 text-slate-800 rounded-lg focus:ring-1 focus:ring-brand-primary outline-none transition-all"
-                        />
-                      </div>
+                      <ImageUpload
+                        value={url}
+                        onChange={val => {
+                          const newCarousel = [...(content.heroCarousel || [])];
+                          newCarousel[idx] = val;
+                          updateContentField('heroCarousel', newCarousel);
+                        }}
+                        label={`Foto Slide ${idx + 1}`}
+                      />
                     </div>
                   ))}
 
@@ -544,15 +516,11 @@ export default function IntegratedCMSModal() {
                 </div>
               </div>
 
-              <div className="space-y-1.5">
-                <label className="text-xs text-slate-500 font-bold block">Foto Kepala UPT SD Negeri Remen 2 URL</label>
-                <input
-                  type="text"
-                  value={content.headmasterPhoto || ''}
-                  onChange={e => updateContentField('headmasterPhoto', e.target.value)}
-                  className="w-full px-4 py-3 text-sm bg-white border border-slate-200 text-slate-800 rounded-xl"
-                />
-              </div>
+              <ImageUpload
+                value={content.headmasterPhoto || ''}
+                onChange={val => updateContentField('headmasterPhoto', val)}
+                label="Foto Kepala UPT SD Negeri Remen 2"
+              />
 
               <RichTextEditor 
                 label="Sambutan Kepala UPT SD Negeri Remen 2"
@@ -608,15 +576,11 @@ export default function IntegratedCMSModal() {
                 />
               </div>
 
-              <div className="space-y-1.5">
-                <label className="text-xs text-slate-500 font-bold block">Foto Perpustakaan URL</label>
-                <input
-                  type="text"
-                  value={content.perpustakaan?.foto || ''}
-                  onChange={e => updateContentField('perpustakaan', { ...content.perpustakaan, foto: e.target.value })}
-                  className="w-full px-4 py-3 text-sm bg-white border border-slate-200 text-slate-800 rounded-xl focus:ring-2 focus:ring-brand-primary outline-none"
-                />
-              </div>
+              <ImageUpload
+                value={content.perpustakaan?.foto || ''}
+                onChange={val => updateContentField('perpustakaan', { ...content.perpustakaan, foto: val })}
+                label="Foto Perpustakaan"
+              />
 
               {/* Stats */}
               <div className="border-t border-slate-200 pt-5 space-y-4">
@@ -886,15 +850,11 @@ export default function IntegratedCMSModal() {
                 />
               </div>
 
-              <div className="space-y-1.5">
-                <label className="text-xs text-slate-500 font-bold block">Foto UKS URL</label>
-                <input
-                  type="text"
-                  value={content.uks?.foto || ''}
-                  onChange={e => updateContentField('uks', { ...content.uks, foto: e.target.value })}
-                  className="w-full px-4 py-3 text-sm bg-white border border-slate-200 text-slate-800 rounded-xl focus:ring-2 focus:ring-brand-primary outline-none"
-                />
-              </div>
+              <ImageUpload
+                value={content.uks?.foto || ''}
+                onChange={val => updateContentField('uks', { ...content.uks, foto: val })}
+                label="Foto UKS"
+              />
 
               {/* Stats */}
               <div className="border-t border-slate-200 pt-5 space-y-4">
@@ -1264,15 +1224,11 @@ export default function IntegratedCMSModal() {
                         className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl"
                       />
                     </div>
-                    <div className="space-y-1">
-                      <label className="text-[10px] text-slate-400 font-bold block">URL Foto Cover</label>
-                      <input
-                        type="text"
-                        value={item.image}
-                        onChange={e => updateContentListItem('programs', item.id, 'image', e.target.value)}
-                        className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl font-mono"
-                      />
-                    </div>
+                    <ImageUpload
+                      value={item.image}
+                      onChange={val => updateContentListItem('programs', item.id, 'image', val)}
+                      label="Foto Cover Program"
+                    />
                   </div>
                 ))}
               </div>
@@ -1381,15 +1337,11 @@ export default function IntegratedCMSModal() {
                         className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl"
                       />
                     </div>
-                    <div className="space-y-1">
-                      <label className="text-[10px] text-slate-400 font-bold block">URL Foto Dokumentasi</label>
-                      <input
-                        type="text"
-                        value={item.image}
-                        onChange={e => updateContentListItem('prestasi', item.id, 'image', e.target.value)}
-                        className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl font-mono"
-                      />
-                    </div>
+                    <ImageUpload
+                      value={item.image}
+                      onChange={val => updateContentListItem('prestasi', item.id, 'image', val)}
+                      label="Foto Dokumentasi Prestasi"
+                    />
                   </div>
                 ))}
               </div>
@@ -1476,16 +1428,12 @@ export default function IntegratedCMSModal() {
                           />
                         </div>
                       </div>
-                      <div className="grid grid-cols-2 gap-2">
-                        <div className="space-y-1">
-                          <label className="text-[9px] text-slate-400 uppercase font-black tracking-wider block">URL Foto Profil</label>
-                          <input
-                            type="text"
-                            value={item.photo}
-                            onChange={e => updateContentListItem('guru', item.id, 'photo', e.target.value)}
-                            className="w-full px-2 py-1.5 text-[9px] bg-slate-50 border border-slate-200 rounded-lg font-mono"
-                          />
-                        </div>
+                      <div className="space-y-2">
+                        <ImageUpload
+                          value={item.photo}
+                          onChange={val => updateContentListItem('guru', item.id, 'photo', val)}
+                          label="Foto Profil Guru"
+                        />
                         <div className="space-y-1">
                           <label className="text-[9px] text-slate-400 uppercase font-black tracking-wider block">E-mail</label>
                           <input
@@ -1561,16 +1509,11 @@ export default function IntegratedCMSModal() {
                           </select>
                         </div>
                       </div>
-                      <div className="space-y-1">
-                        <label className="text-[9px] text-slate-400 font-bold uppercase block">URL Foto</label>
-                        <input
-                          type="text"
-                          value={photo.url}
-                          onChange={e => updateContentListItem('galeri', photo.id, 'url', e.target.value)}
-                          className="w-full px-2.5 py-1.5 text-[9px] bg-slate-50 border border-slate-200 rounded-lg font-mono text-slate-500"
-                          placeholder="URL Foto"
-                        />
-                      </div>
+                      <ImageUpload
+                        value={photo.url}
+                        onChange={val => updateContentListItem('galeri', photo.id, 'url', val)}
+                        label="Foto Dokumentasi Galeri"
+                      />
                     </div>
                   </div>
                 ))}
@@ -1649,9 +1592,9 @@ export default function IntegratedCMSModal() {
                           />
                         </div>
                       </div>
-                      <div className="grid grid-cols-2 gap-2">
+                      <div className="space-y-2">
                         <div>
-                          <label className="text-[9px] text-slate-400 uppercase font-black block mb-1">Kategori</label>
+                          <label className="text-[9px] text-slate-400 uppercase font-black block mb-1 font-bold">Kategori</label>
                           <select
                             value={video.category}
                             onChange={e => updateContentListItem('videos', video.id, 'category', e.target.value)}
@@ -1664,16 +1607,11 @@ export default function IntegratedCMSModal() {
                             <option value="Kesenian & Budaya">Kesenian & Budaya</option>
                           </select>
                         </div>
-                        <div>
-                          <label className="text-[9px] text-slate-400 uppercase font-black block mb-1">URL Cover / Thumbnail</label>
-                          <input
-                            type="text"
-                            value={video.thumbnail}
-                            onChange={e => updateContentListItem('videos', video.id, 'thumbnail', e.target.value)}
-                            className="w-full px-2.5 py-1.5 text-[9px] bg-slate-50 border border-slate-200 rounded-lg font-mono text-slate-500"
-                            placeholder="URL Cover"
-                          />
-                        </div>
+                        <ImageUpload
+                          value={video.thumbnail}
+                          onChange={val => updateContentListItem('videos', video.id, 'thumbnail', val)}
+                          label="Cover / Gambar Mini Video"
+                        />
                       </div>
                     </div>
                   </div>
@@ -2092,25 +2030,21 @@ export default function IntegratedCMSModal() {
                         />
                       </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="space-y-2">
                       <div className="space-y-1">
                         <label className="text-[10px] text-slate-400 font-bold block">Tanggal Terbit</label>
                         <input
                           type="text"
                           value={item.date}
                           onChange={e => updateContentListItem('berita', item.id, 'date', e.target.value)}
-                          className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl"
+                          className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl font-bold"
                         />
                       </div>
-                      <div className="space-y-1">
-                        <label className="text-[10px] text-slate-400 font-bold block">URL Thumbnail</label>
-                        <input
-                          type="text"
-                          value={item.thumbnail}
-                          onChange={e => updateContentListItem('berita', item.id, 'thumbnail', e.target.value)}
-                          className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl font-mono"
-                        />
-                      </div>
+                      <ImageUpload
+                        value={item.thumbnail}
+                        onChange={val => updateContentListItem('berita', item.id, 'thumbnail', val)}
+                        label="Gambar Cover Berita"
+                      />
                     </div>
                     <div className="space-y-1">
                       <label className="text-[10px] text-slate-400 font-bold block">Ringkasan Berita</label>
@@ -2182,13 +2116,13 @@ export default function IntegratedCMSModal() {
                         />
                       </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="space-y-2">
                       <div className="space-y-1">
                         <label className="text-[10px] text-slate-400 font-bold block">Peran Kategori</label>
                         <select
                           value={item.role}
                           onChange={e => updateContentListItem('testimoni', item.id, 'role', e.target.value)}
-                          className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none"
+                          className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none font-bold"
                         >
                           <option value="Orang Tua">Orang Tua</option>
                           <option value="Alumni">Alumni</option>
@@ -2196,15 +2130,11 @@ export default function IntegratedCMSModal() {
                           <option value="Siswa">Siswa</option>
                         </select>
                       </div>
-                      <div className="space-y-1">
-                        <label className="text-[10px] text-slate-400 font-bold block">URL Avatar Foto</label>
-                        <input
-                          type="text"
-                          value={item.avatar}
-                          onChange={e => updateContentListItem('testimoni', item.id, 'avatar', e.target.value)}
-                          className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl font-mono text-slate-400"
-                        />
-                      </div>
+                      <ImageUpload
+                        value={item.avatar}
+                        onChange={val => updateContentListItem('testimoni', item.id, 'avatar', val)}
+                        label="Foto Avatar"
+                      />
                     </div>
                     <div className="space-y-1">
                       <label className="text-[10px] text-slate-400 font-bold block">Komentar Testimoni</label>
@@ -2240,26 +2170,11 @@ export default function IntegratedCMSModal() {
                     </div>
                     <span className="font-display font-black text-slate-800 text-xs uppercase tracking-tight">Struktur Organisasi Sekolah</span>
                   </div>
-                  <div className="space-y-2">
-                    <input
-                      type="text"
-                      value={content.strukturSekolahImageUrl || ''}
-                      onChange={e => updateContentField('strukturSekolahImageUrl', e.target.value)}
-                      className="w-full px-3 py-2 text-xs font-mono bg-slate-50 border border-slate-200 text-slate-600 rounded-xl focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all"
-                      placeholder="Contoh: https://i.ibb.co/xyz/bagan_sekolah.jpg"
-                    />
-                    {content.strukturSekolahImageUrl && (
-                      <div className="relative group w-48 aspect-video overflow-hidden rounded-lg border border-slate-200 mt-1">
-                        <img src={content.strukturSekolahImageUrl} alt="Pratinjau Struktur Sekolah" className="w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                          <a href={content.strukturSekolahImageUrl} target="_blank" rel="noopener noreferrer" className="p-1.5 bg-white/90 rounded-full text-slate-800 text-xs font-bold hover:bg-white flex items-center gap-1">
-                            <ImageIcon className="h-3 w-3 text-brand-primary" />
-                            <span>Buka</span>
-                          </a>
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                  <ImageUpload
+                    value={content.strukturSekolahImageUrl || ''}
+                    onChange={val => updateContentField('strukturSekolahImageUrl', val)}
+                    label="Bagan Struktur Organisasi Sekolah"
+                  />
                 </div>
 
                 {/* 2. Struktur Komite */}
@@ -2270,26 +2185,11 @@ export default function IntegratedCMSModal() {
                     </div>
                     <span className="font-display font-black text-slate-800 text-xs uppercase tracking-tight">Struktur Komite Sekolah</span>
                   </div>
-                  <div className="space-y-2">
-                    <input
-                      type="text"
-                      value={content.strukturKomiteImageUrl || ''}
-                      onChange={e => updateContentField('strukturKomiteImageUrl', e.target.value)}
-                      className="w-full px-3 py-2 text-xs font-mono bg-slate-50 border border-slate-200 text-slate-600 rounded-xl focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all"
-                      placeholder="Contoh: https://i.ibb.co/xyz/bagan_komite.jpg"
-                    />
-                    {content.strukturKomiteImageUrl && (
-                      <div className="relative group w-48 aspect-video overflow-hidden rounded-lg border border-slate-200 mt-1">
-                        <img src={content.strukturKomiteImageUrl} alt="Pratinjau Struktur Komite" className="w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                          <a href={content.strukturKomiteImageUrl} target="_blank" rel="noopener noreferrer" className="p-1.5 bg-white/90 rounded-full text-slate-800 text-xs font-bold hover:bg-white flex items-center gap-1">
-                            <ImageIcon className="h-3 w-3 text-brand-primary" />
-                            <span>Buka</span>
-                          </a>
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                  <ImageUpload
+                    value={content.strukturKomiteImageUrl || ''}
+                    onChange={val => updateContentField('strukturKomiteImageUrl', val)}
+                    label="Bagan Struktur Komite Sekolah"
+                  />
                 </div>
 
                 {/* 3. Struktur UKS */}
@@ -2300,26 +2200,11 @@ export default function IntegratedCMSModal() {
                     </div>
                     <span className="font-display font-black text-slate-800 text-xs uppercase tracking-tight">Struktur Organisasi UKS</span>
                   </div>
-                  <div className="space-y-2">
-                    <input
-                      type="text"
-                      value={content.strukturUKSImageUrl || ''}
-                      onChange={e => updateContentField('strukturUKSImageUrl', e.target.value)}
-                      className="w-full px-3 py-2 text-xs font-mono bg-slate-50 border border-slate-200 text-slate-600 rounded-xl focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all"
-                      placeholder="Contoh: https://i.ibb.co/xyz/bagan_uks.jpg"
-                    />
-                    {content.strukturUKSImageUrl && (
-                      <div className="relative group w-48 aspect-video overflow-hidden rounded-lg border border-slate-200 mt-1">
-                        <img src={content.strukturUKSImageUrl} alt="Pratinjau Struktur UKS" className="w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                          <a href={content.strukturUKSImageUrl} target="_blank" rel="noopener noreferrer" className="p-1.5 bg-white/90 rounded-full text-slate-800 text-xs font-bold hover:bg-white flex items-center gap-1">
-                            <ImageIcon className="h-3 w-3 text-brand-primary" />
-                            <span>Buka</span>
-                          </a>
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                  <ImageUpload
+                    value={content.strukturUKSImageUrl || ''}
+                    onChange={val => updateContentField('strukturUKSImageUrl', val)}
+                    label="Bagan Struktur Organisasi UKS"
+                  />
                 </div>
 
                 {/* 4. Struktur Perpustakaan */}
@@ -2330,26 +2215,11 @@ export default function IntegratedCMSModal() {
                     </div>
                     <span className="font-display font-black text-slate-800 text-xs uppercase tracking-tight">Struktur Organisasi Perpustakaan</span>
                   </div>
-                  <div className="space-y-2">
-                    <input
-                      type="text"
-                      value={content.strukturPerpustakaanImageUrl || ''}
-                      onChange={e => updateContentField('strukturPerpustakaanImageUrl', e.target.value)}
-                      className="w-full px-3 py-2 text-xs font-mono bg-slate-50 border border-slate-200 text-slate-600 rounded-xl focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all"
-                      placeholder="Contoh: https://i.ibb.co/xyz/bagan_pustaka.jpg"
-                    />
-                    {content.strukturPerpustakaanImageUrl && (
-                      <div className="relative group w-48 aspect-video overflow-hidden rounded-lg border border-slate-200 mt-1">
-                        <img src={content.strukturPerpustakaanImageUrl} alt="Pratinjau Struktur Perpustakaan" className="w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                          <a href={content.strukturPerpustakaanImageUrl} target="_blank" rel="noopener noreferrer" className="p-1.5 bg-white/90 rounded-full text-slate-800 text-xs font-bold hover:bg-white flex items-center gap-1">
-                            <ImageIcon className="h-3 w-3 text-brand-primary" />
-                            <span>Buka</span>
-                          </a>
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                  <ImageUpload
+                    value={content.strukturPerpustakaanImageUrl || ''}
+                    onChange={val => updateContentField('strukturPerpustakaanImageUrl', val)}
+                    label="Bagan Struktur Organisasi Perpustakaan"
+                  />
                 </div>
 
                 {/* 5. Struktur Ekstrakurikuler */}
@@ -2360,26 +2230,11 @@ export default function IntegratedCMSModal() {
                     </div>
                     <span className="font-display font-black text-slate-800 text-xs uppercase tracking-tight">Struktur Organisasi Ekstrakurikuler</span>
                   </div>
-                  <div className="space-y-2">
-                    <input
-                      type="text"
-                      value={content.strukturEkskulImageUrl || ''}
-                      onChange={e => updateContentField('strukturEkskulImageUrl', e.target.value)}
-                      className="w-full px-3 py-2 text-xs font-mono bg-slate-50 border border-slate-200 text-slate-600 rounded-xl focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all"
-                      placeholder="Contoh: https://i.ibb.co/xyz/bagan_ekskul.jpg"
-                    />
-                    {content.strukturEkskulImageUrl && (
-                      <div className="relative group w-48 aspect-video overflow-hidden rounded-lg border border-slate-200 mt-1">
-                        <img src={content.strukturEkskulImageUrl} alt="Pratinjau Struktur Ekstrakurikuler" className="w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                          <a href={content.strukturEkskulImageUrl} target="_blank" rel="noopener noreferrer" className="p-1.5 bg-white/90 rounded-full text-slate-800 text-xs font-bold hover:bg-white flex items-center gap-1">
-                            <ImageIcon className="h-3 w-3 text-brand-primary" />
-                            <span>Buka</span>
-                          </a>
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                  <ImageUpload
+                    value={content.strukturEkskulImageUrl || ''}
+                    onChange={val => updateContentField('strukturEkskulImageUrl', val)}
+                    label="Bagan Struktur Organisasi Ekstrakurikuler"
+                  />
                 </div>
               </div>
 
@@ -2662,7 +2517,9 @@ const CATEGORIZED_ICONS = [
       { name: 'BookOpen', label: 'Buku Buka', tags: ['buku', 'baca', 'perpustakaan', 'book', 'read'], colorClass: 'bg-indigo-500' },
       { name: 'GraduationCap', label: 'Toga Wisuda', tags: ['toga', 'wisuda', 'kelulusan', 'graduation', 'cap', 'alumni'], colorClass: 'bg-blue-600' },
       { name: 'Award', label: 'Sertifikat', tags: ['piagam', 'penghargaan', 'sertifikat', 'award', 'medal', 'juara'], colorClass: 'bg-yellow-500' },
-      { name: 'Trophy', label: 'Piala', tags: ['juara', 'piala', 'trophy', 'prestasi', 'win', 'gold'], colorClass: 'bg-amber-500' },
+      { name: 'Trophy', label: 'Piala Emas', tags: ['juara', 'piala', 'trophy', 'prestasi', 'win', 'gold'], colorClass: 'bg-amber-500' },
+      { name: 'Medal', label: 'Medali Juara', tags: ['medali', 'juara', 'piala', 'prestasi', 'medal'], colorClass: 'bg-amber-600' },
+      { name: 'Crown', label: 'Mahkota Juara', tags: ['mahkota', 'utama', 'juara', 'prestasi', 'crown'], colorClass: 'bg-yellow-600' },
       { name: 'Brain', label: 'Kecerdasan', tags: ['otak', 'cerdas', 'pikir', 'brain', 'smart', 'ipa'], colorClass: 'bg-pink-500' },
       { name: 'School', label: 'Gedung Sekolah', tags: ['sekolah', 'gedung', 'school', 'building', 'kelas'], colorClass: 'bg-sky-500' },
       { name: 'Presentation', label: 'Papan Tulis', tags: ['mengajar', 'kelas', 'papan', 'presentation', 'board', 'guru'], colorClass: 'bg-teal-600' },
@@ -2680,76 +2537,88 @@ const CATEGORIZED_ICONS = [
       { name: 'Languages', label: 'Multi Bahasa', tags: ['bahasa', 'inggris', 'terjemah', 'languages', 'translate'], colorClass: 'bg-rose-500' },
       { name: 'FileBadge', label: 'Lencana Dokumen', tags: ['dokumen', 'ijazah', 'lencana', 'sk', 'file', 'badge'], colorClass: 'bg-blue-700' },
       { name: 'Backpack', label: 'Tas Sekolah', tags: ['tas', 'ransel', 'sekolah', 'backpack', 'bag'], colorClass: 'bg-orange-500' },
+      { name: 'Clipboard', label: 'Papan Ujian', tags: ['tugas', 'ujian', 'soal', 'papan', 'clipboard'], colorClass: 'bg-emerald-600' },
+      { name: 'FileText', label: 'File Dokumen', tags: ['dokumen', 'materi', 'tugas', 'file', 'pdf'], colorClass: 'bg-blue-500' },
     ]
   },
   {
     category: 'Fasilitas & Penunjang',
     items: [
-      { name: 'Building', label: 'Gedung', tags: ['ruangan', 'kelas', 'gedung', 'building'], colorClass: 'bg-slate-500' },
+      { name: 'Building', label: 'Gedung Kelas', tags: ['ruangan', 'kelas', 'gedung', 'building'], colorClass: 'bg-slate-500' },
+      { name: 'Building2', label: 'Gedung Utama', tags: ['sekolah', 'kantor', 'utama', 'gedung', 'building'], colorClass: 'bg-slate-600' },
       { name: 'Laptop', label: 'Komputer', tags: ['lab', 'komputer', 'laptop', 'it', 'tech', 'ict'], colorClass: 'bg-blue-500' },
-      { name: 'Tablet', label: 'Tablet', tags: ['gawai', 'it', 'tablet', 'screen', 'ipad'], colorClass: 'bg-cyan-500' },
-      { name: 'Wifi', label: 'Internet', tags: ['wifi', 'sinyal', 'internet', 'network', 'hotspot'], colorClass: 'bg-sky-400' },
-      { name: 'Wind', label: 'AC / Angin', tags: ['ac', 'udara', 'dingin', 'kipas', 'wind', 'cooler'], colorClass: 'bg-cyan-400' },
-      { name: 'Monitor', label: 'Layar TV', tags: ['layar', 'tv', 'monitor', 'display', 'proyektor'], colorClass: 'bg-slate-600' },
-      { name: 'Bed', label: 'Tempat Tidur', tags: ['uks', 'tidur', 'kasur', 'bed', 'rest', 'klinik'], colorClass: 'bg-emerald-500' },
+      { name: 'Tablet', label: 'Tablet Belajar', tags: ['gawai', 'it', 'tablet', 'screen', 'ipad'], colorClass: 'bg-cyan-500' },
+      { name: 'Wifi', label: 'Internet Cepat', tags: ['wifi', 'sinyal', 'internet', 'network', 'hotspot'], colorClass: 'bg-sky-400' },
+      { name: 'Wind', label: 'Pendingin AC', tags: ['ac', 'udara', 'dingin', 'kipas', 'wind', 'cooler'], colorClass: 'bg-cyan-400' },
+      { name: 'Monitor', label: 'Layar Proyektor', tags: ['layar', 'tv', 'monitor', 'display', 'proyektor'], colorClass: 'bg-slate-600' },
+      { name: 'Bed', label: 'Tempat Tidur UKS', tags: ['uks', 'tidur', 'kasur', 'bed', 'rest', 'klinik'], colorClass: 'bg-emerald-500' },
       { name: 'TreePine', label: 'Taman Hijau', tags: ['pohon', 'taman', 'hijau', 'pinus', 'tree', 'kebun'], colorClass: 'bg-emerald-600' },
-      { name: 'ChefHat', label: 'Kantin Kuliner', tags: ['kantin', 'makan', 'koki', 'chef', 'food', 'jajan'], colorClass: 'bg-orange-500' },
+      { name: 'ChefHat', label: 'Kantin Sehat', tags: ['kantin', 'makan', 'koki', 'chef', 'food', 'jajan'], colorClass: 'bg-orange-500' },
       { name: 'Printer', label: 'Mesin Cetak', tags: ['cetak', 'kertas', 'printer', 'copy', 'fotokopi'], colorClass: 'bg-slate-400' },
-      { name: 'Tv', label: 'Televisi', tags: ['tv', 'layar', 'video', 'television'], colorClass: 'bg-red-500' },
+      { name: 'Tv', label: 'Televisi Kelas', tags: ['tv', 'layar', 'video', 'television'], colorClass: 'bg-red-500' },
       { name: 'Database', label: 'Pusat Data', tags: ['server', 'data', 'it', 'database'], colorClass: 'bg-zinc-600' },
-      { name: 'Shield', label: 'Keamanan / Satpam', tags: ['satpam', 'aman', 'pos', 'shield', 'security'], colorClass: 'bg-indigo-700' },
+      { name: 'Shield', label: 'Pos Satpam', tags: ['satpam', 'aman', 'pos', 'shield', 'security'], colorClass: 'bg-indigo-700' },
       { name: 'Key', label: 'Kunci Ruangan', tags: ['kunci', 'loker', 'pintu', 'key'], colorClass: 'bg-amber-400' },
       { name: 'Utensils', label: 'Alat Makan', tags: ['sendok', 'garpu', 'makan', 'piring', 'utensils'], colorClass: 'bg-amber-600' },
-      { name: 'Coffee', label: 'Ruang Guru / Kopi', tags: ['kopi', 'teh', 'guru', 'istirahat', 'coffee', 'tea'], colorClass: 'bg-yellow-800' },
+      { name: 'Coffee', label: 'Ruang Guru', tags: ['kopi', 'teh', 'guru', 'istirahat', 'coffee', 'tea'], colorClass: 'bg-yellow-800' },
       { name: 'Trash2', label: 'Tempat Sampah', tags: ['sampah', 'bersih', 'buang', 'trash', 'dustbin'], colorClass: 'bg-rose-600' },
       { name: 'Car', label: 'Parkir Mobil', tags: ['mobil', 'parkir', 'kendaraan', 'car'], colorClass: 'bg-blue-600' },
-      { name: 'Briefcase', label: 'Kantor Guru', tags: ['kantor', 'tas', 'kerja', 'briefcase', 'office'], colorClass: 'bg-neutral-600' },
+      { name: 'Bus', label: 'Bus Sekolah', tags: ['bus', 'jemputan', 'mobil', 'kendaraan'], colorClass: 'bg-amber-500' },
+      { name: 'Volume2', label: 'Sound System', tags: ['speaker', 'suara', 'audio', 'mic', 'volume'], colorClass: 'bg-violet-600' },
+      { name: 'Briefcase', label: 'Kantor Staf', tags: ['kantor', 'tas', 'kerja', 'briefcase', 'office'], colorClass: 'bg-neutral-600' },
     ]
   },
   {
-    category: 'Aktivitas & Karakter',
+    category: 'Olahraga, Seni & Karakter',
     items: [
       { name: 'Flame', label: 'Semangat', tags: ['api', 'semangat', 'pramuka', 'flame', 'fire'], colorClass: 'bg-red-500' },
-      { name: 'Bike', label: 'Olahraga', tags: ['sepeda', 'olahraga', 'sehat', 'bike', 'sport'], colorClass: 'bg-emerald-500' },
-      { name: 'Dumbbell', label: 'Kebugaran', tags: ['gym', 'olahraga', 'otot', 'dumbbell', 'fitness'], colorClass: 'bg-slate-700' },
+      { name: 'Bike', label: 'Olahraga Sepeda', tags: ['sepeda', 'olahraga', 'sehat', 'bike', 'sport'], colorClass: 'bg-emerald-500' },
+      { name: 'Dumbbell', label: 'Kebugaran Jasmani', tags: ['gym', 'olahraga', 'otot', 'dumbbell', 'fitness'], colorClass: 'bg-slate-700' },
       { name: 'Music', label: 'Seni Musik', tags: ['musik', 'lagu', 'rebana', 'music', 'song', 'pianika'], colorClass: 'bg-violet-500' },
-      { name: 'Mic', label: 'Pidato / Paduan', tags: ['suara', 'mic', 'paduan', 'singing', 'speak', 'karaoke'], colorClass: 'bg-rose-500' },
-      { name: 'Camera', label: 'Fotografi', tags: ['foto', 'kamera', 'dokumentasi', 'camera'], colorClass: 'bg-neutral-600' },
-      { name: 'Puzzle', label: 'Kerjasama', tags: ['game', 'puzzle', 'pikir', 'logika', 'team', 'kelompok'], colorClass: 'bg-orange-500' },
+      { name: 'Music2', label: 'Rebana / Hadroh', tags: ['rebana', 'musik', 'islami', 'music', 'religius'], colorClass: 'bg-rose-600' },
+      { name: 'Mic', label: 'Seni Suara / Pidato', tags: ['suara', 'mic', 'paduan', 'singing', 'speak', 'karaoke'], colorClass: 'bg-rose-500' },
+      { name: 'Camera', label: 'Klub Fotografi', tags: ['foto', 'kamera', 'dokumentasi', 'camera'], colorClass: 'bg-neutral-600' },
+      { name: 'Clapperboard', label: 'Klub Multimedia', tags: ['film', 'video', 'kamera', 'clapper', 'cinema'], colorClass: 'bg-red-600' },
+      { name: 'Puzzle', label: 'Kerjasama Kelompok', tags: ['game', 'puzzle', 'pikir', 'logika', 'team', 'kelompok'], colorClass: 'bg-orange-500' },
       { name: 'Target', label: 'Fokus Target', tags: ['panah', 'target', 'fokus', 'goal', 'panahan'], colorClass: 'bg-rose-600' },
-      { name: 'Tent', label: 'Perkemahan', tags: ['pramuka', 'kemah', 'tenda', 'tent', 'camp', 'persami'], colorClass: 'bg-amber-600' },
+      { name: 'Tent', label: 'Perkemahan Pramuka', tags: ['pramuka', 'kemah', 'tenda', 'tent', 'camp', 'persami'], colorClass: 'bg-amber-600' },
       { name: 'Activity', label: 'Kesehatan UKS', tags: ['jantung', 'uks', 'sehat', 'activity', 'pulse'], colorClass: 'bg-red-500' },
-      { name: 'Stethoscope', label: 'Dokter Kecil', tags: ['uks', 'dokter', 'obat', 'stethoscope', 'sakit'], colorClass: 'bg-rose-500' },
-      { name: 'Swords', label: 'Bela Diri / Silat', tags: ['silat', 'pencak', 'bela diri', 'pedang', 'swords', 'martial'], colorClass: 'bg-red-700' },
+      { name: 'Stethoscope', label: 'Klinik / Dokter', tags: ['uks', 'dokter', 'obat', 'stethoscope', 'sakit'], colorClass: 'bg-rose-500' },
+      { name: 'Swords', label: 'Pencak Silat', tags: ['silat', 'pencak', 'bela diri', 'pedang', 'swords', 'martial'], colorClass: 'bg-red-700' },
       { name: 'UserCheck', label: 'Absensi / Disiplin', tags: ['absen', 'kehadiran', 'disiplin', 'murid', 'attendance'], colorClass: 'bg-teal-500' },
-      { name: 'Footprints', label: 'Penjelajahan', tags: ['kaki', 'jalan', 'pramuka', 'outdoor', 'footprints'], colorClass: 'bg-yellow-600' },
-      { name: 'Hourglass', label: 'Waktu / Disiplin', tags: ['waktu', 'jam', 'pasir', 'hourglass'], colorClass: 'bg-zinc-500' },
+      { name: 'Footprints', label: 'Penjelajahan Alam', tags: ['kaki', 'jalan', 'pramuka', 'outdoor', 'footprints'], colorClass: 'bg-yellow-600' },
+      { name: 'Hourglass', label: 'Manajemen Waktu', tags: ['waktu', 'jam', 'pasir', 'hourglass'], colorClass: 'bg-zinc-500' },
       { name: 'Flag', label: 'Upacara Bendera', tags: ['bendera', 'upacara', 'flag', 'paskibra'], colorClass: 'bg-red-600' },
-      { name: 'Trees', label: 'Adiwiyata', tags: ['adiwiyata', 'hijau', 'pohon', 'lingkungan', 'trees'], colorClass: 'bg-green-600' },
+      { name: 'Trees', label: 'Adiwiyata Hijau', tags: ['adiwiyata', 'hijau', 'pohon', 'lingkungan', 'trees'], colorClass: 'bg-green-600' },
       { name: 'Gamepad2', label: 'E-Sports', tags: ['game', 'komputer', 'main', 'gamepad', 'ps'], colorClass: 'bg-pink-600' },
-      { name: 'Brush', label: 'Melukis', tags: ['gambar', 'kuas', 'lukis', 'brush', 'art'], colorClass: 'bg-purple-600' },
+      { name: 'Brush', label: 'Seni Lukis', tags: ['gambar', 'kuas', 'lukis', 'brush', 'art'], colorClass: 'bg-purple-600' },
+      { name: 'Scissors', label: 'Kerajinan Tangan', tags: ['gunting', 'kreatif', 'prakarya', 'craft', 'scissors'], colorClass: 'bg-teal-500' },
+      { name: 'Apple', label: 'Nutrisi & Gizi', tags: ['apel', 'buah', 'sehat', 'makan', 'apple'], colorClass: 'bg-emerald-500' },
     ]
   },
   {
     category: 'Sosial & Komunikasi',
     items: [
-      { name: 'Users', label: 'Komunitas', tags: ['guru', 'murid', 'orangtua', 'users', 'people', 'siswa'], colorClass: 'bg-blue-500' },
+      { name: 'Users', label: 'Komunitas Sekolah', tags: ['guru', 'murid', 'orangtua', 'users', 'people', 'siswa'], colorClass: 'bg-blue-500' },
       { name: 'Heart', label: 'Kasih Sayang', tags: ['cinta', 'kasih', 'peduli', 'heart', 'love', 'karakter'], colorClass: 'bg-rose-500' },
-      { name: 'Smile', label: 'Karakter Sopan', tags: ['senyum', 'ramah', 'sopan', 'smile', 'happy', 'karakter'], colorClass: 'bg-yellow-500' },
+      { name: 'Smile', label: 'Sikap Sopan', tags: ['senyum', 'ramah', 'sopan', 'smile', 'happy', 'karakter'], colorClass: 'bg-yellow-500' },
       { name: 'HeartHandshake', label: 'Budi Pekerti', tags: ['jabat', 'damai', 'pekerti', 'handshake', 'komite'], colorClass: 'bg-indigo-500' },
-      { name: 'MessageSquare', label: 'Konsultasi', tags: ['chat', 'tanya', 'komentar', 'message', 'hubungi'], colorClass: 'bg-teal-500' },
-      { name: 'Mail', label: 'Surat Elektronik', tags: ['surel', 'email', 'pesan', 'mail', 'surat'], colorClass: 'bg-blue-400' },
-      { name: 'Phone', label: 'Hubungi Telepon', tags: ['telp', 'wa', 'kontak', 'phone', 'whatsapp'], colorClass: 'bg-emerald-400' },
-      { name: 'MapPin', label: 'Lokasi Peta', tags: ['alamat', 'peta', 'lokasi', 'map', 'pin', 'jalan'], colorClass: 'bg-red-400' },
-      { name: 'Share2', label: 'Bagikan', tags: ['share', 'bagikan', 'sosmed'], colorClass: 'bg-sky-500' },
+      { name: 'MessageSquare', label: 'Layanan Konsultasi', tags: ['chat', 'tanya', 'komentar', 'message', 'hubungi'], colorClass: 'bg-teal-500' },
+      { name: 'Mail', label: 'E-Mail Surat', tags: ['surel', 'email', 'pesan', 'mail', 'surat'], colorClass: 'bg-blue-400' },
+      { name: 'Phone', label: 'WhatsApp / Telp', tags: ['telp', 'wa', 'kontak', 'phone', 'whatsapp'], colorClass: 'bg-emerald-400' },
+      { name: 'MapPin', label: 'Lokasi Map', tags: ['alamat', 'peta', 'lokasi', 'map', 'pin', 'jalan'], colorClass: 'bg-red-400' },
+      { name: 'Share2', label: 'Bagikan Berita', tags: ['share', 'bagikan', 'sosmed'], colorClass: 'bg-sky-500' },
       { name: 'Instagram', label: 'Instagram', tags: ['ig', 'instagram', 'sosmed'], colorClass: 'bg-pink-600' },
-      { name: 'Youtube', label: 'YouTube', tags: ['yt', 'youtube', 'video'], colorClass: 'bg-red-600' },
+      { name: 'Youtube', label: 'YouTube Video', tags: ['yt', 'youtube', 'video'], colorClass: 'bg-red-600' },
       { name: 'Facebook', label: 'Facebook', tags: ['fb', 'facebook', 'sosmed'], colorClass: 'bg-blue-700' },
-      { name: 'Globe2', label: 'Situs Web', tags: ['web', 'situs', 'online', 'website', 'globe'], colorClass: 'bg-emerald-500' },
-      { name: 'Rss', label: 'Berita / Feed', tags: ['berita', 'kabar', 'rss', 'pengumuman'], colorClass: 'bg-orange-500' },
-      { name: 'Send', label: 'Kirim Pesan', tags: ['kirim', 'pesan', 'telegram', 'send'], colorClass: 'bg-sky-500' },
-      { name: 'Megaphone', label: 'Pengumuman', tags: ['info', 'pengumuman', 'suara', 'megaphone', 'pemberitahuan'], colorClass: 'bg-amber-500' },
-      { name: 'Bell', label: 'Bel Sekolah', tags: ['bel', 'lonceng', 'alarm', 'notif', 'bell'], colorClass: 'bg-amber-400' },
+      { name: 'Globe2', label: 'Situs Resmi', tags: ['web', 'situs', 'online', 'website', 'globe'], colorClass: 'bg-emerald-500' },
+      { name: 'Rss', label: 'Sindikasi Berita', tags: ['berita', 'kabar', 'rss', 'pengumuman'], colorClass: 'bg-orange-500' },
+      { name: 'Send', label: 'Telegram Kirim', tags: ['kirim', 'pesan', 'telegram', 'send'], colorClass: 'bg-sky-500' },
+      { name: 'Megaphone', label: 'Pengumuman Utama', tags: ['info', 'pengumuman', 'suara', 'megaphone', 'pemberitahuan'], colorClass: 'bg-amber-500' },
+      { name: 'Bell', label: 'Bel Masuk Kelas', tags: ['bel', 'lonceng', 'alarm', 'notif', 'bell'], colorClass: 'bg-amber-400' },
+      { name: 'ThumbsUp', label: 'Apresiasi & Like', tags: ['jempol', 'bagus', 'like', 'thumbs', 'apresiasi'], colorClass: 'bg-blue-500' },
+      { name: 'Gift', label: 'Beasiswa & Kado', tags: ['beasiswa', 'hadiah', 'gift', 'box'], colorClass: 'bg-pink-500' },
+      { name: 'Clock', label: 'Disiplin Waktu', tags: ['jam', 'waktu', 'disiplin', 'clock'], colorClass: 'bg-slate-500' },
     ]
   }
 ];

@@ -26,11 +26,11 @@ export default function StrukturOrganisasi() {
           <motion.h1
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-2xl md:text-3xl font-display font-black tracking-tight"
+            className="text-2xl md:text-4xl font-display font-black tracking-widest uppercase"
           >
             STRUKTUR ORGANISASI
           </motion.h1>
-          <p className="text-sm md:text-lg font-medium text-slate-200 mt-2 max-w-md">
+          <p className="text-lg md:text-2xl font-black text-brand-orange mt-2 max-w-xl uppercase tracking-wider">
             UPT SD Negeri Remen 2
           </p>
         </div>
