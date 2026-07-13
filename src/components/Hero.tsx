@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowRight, Play, Users, Award, Monitor, BookOpen, Volume2, Eye, GraduationCap, Home, Trophy } from 'lucide-react';
+import { ArrowRight, Play, Users, Award, Monitor, BookOpen, Volume2, Eye, GraduationCap, Home, Trophy, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCMS } from '../context/CMSContext';
 import { StatItem } from '../types';
 import NumberCounter from './NumberCounter';
@@ -141,7 +141,7 @@ export default function Hero({
   };
 
   return (
-    <section id="beranda" className="relative min-h-screen flex flex-col justify-between pt-16 overflow-hidden">
+    <section id="beranda" className="relative min-h-screen flex flex-col justify-between pt-16 overflow-hidden bg-slate-50 dark:bg-slate-950">
       {/* Top right widgets */}
       <div className="absolute top-32 right-4 z-50 flex gap-2">
         <WeatherWidget lang={lang} />
@@ -167,8 +167,8 @@ export default function Hero({
         </div>
       </div>
 
-      {/* Background Image Slider */}
-      <div className="absolute inset-0 z-0">
+      {/* Background Image Slider (Desktop only) */}
+      <div className="absolute inset-0 z-0 hidden lg:block">
         {allImages.map((img, idx) => (
           <div
             key={idx}
@@ -209,6 +209,54 @@ export default function Hero({
                   </>
                 ) : 'At UPT SD Negeri Remen 2'}
               </h2>
+            </div>
+
+            {/* Dedicated Mobile Photo Carousel (Fits landscape ratios perfectly without bad cropping) */}
+            <div className="block lg:hidden w-full relative aspect-[16/10] sm:aspect-video rounded-3xl overflow-hidden shadow-xl border border-slate-200/60 dark:border-slate-800/80 bg-slate-100 dark:bg-slate-900 group">
+              {allImages.map((img, idx) => (
+                <div
+                  key={idx}
+                  className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+                    idx === currentSlide ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  style={{ backgroundImage: `url('${img}')` }}
+                />
+              ))}
+              {/* Subtle bottom gradient for indicators */}
+              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+              
+              {/* Left/Right Navigation Buttons */}
+              {allImages.length > 1 && (
+                <>
+                  <button
+                    onClick={() => setCurrentSlide((prev) => (prev - 1 + allImages.length) % allImages.length)}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 z-10"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
+                  <button
+                    onClick={() => setCurrentSlide((prev) => (prev + 1) % allImages.length)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 z-10"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
+                </>
+              )}
+
+              {/* Indicator Dots */}
+              {allImages.length > 1 && (
+                <div className="absolute bottom-3 inset-x-0 flex justify-center space-x-1.5 z-10">
+                  {allImages.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        idx === currentSlide ? 'w-4 bg-white' : 'w-1.5 bg-white/50'
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Core Stats Counter Section */}
