@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { RollingCounter } from './RollingCounter';
 import { SchoolContent, KeunggulanItem, ProgramItem, PrestasiItem, GuruItem, GaleriItem, EkstrakurikulerItem, FAQItem, BeritaItem, TestimoniItem, StrukturItem, VideoItem, SaranaItem, Dokumen } from '../types';
 import Toast, { ToastType } from './Toast';
 import { 
@@ -867,7 +868,13 @@ const RichTextEditor = ({ label, value, onChange, placeholder }: { label: string
                     </div>
                     <div>
                       <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</p>
-                      <p className="text-xl font-display font-black text-slate-900">{stat.value}</p>
+                      <p className="text-xl font-display font-black text-slate-900">
+                        {stat.label === 'Total Pengunjung' ? (
+                          <RollingCounter value={Number(stat.value)} />
+                        ) : (
+                          stat.value
+                        )}
+                      </p>
                     </div>
                   </div>
                 ))}

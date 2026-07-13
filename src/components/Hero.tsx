@@ -5,6 +5,7 @@ import { ArrowRight, Play, Users, Award, Monitor, BookOpen, Volume2, Eye, Gradua
 import { useCMS } from '../context/CMSContext';
 import { StatItem } from '../types';
 import NumberCounter from './NumberCounter';
+import { RollingCounter } from './RollingCounter';
 import ClockWidget from './ClockWidget';
 import WeatherWidget from './WeatherWidget';
 
@@ -286,7 +287,7 @@ export default function Hero({
                 <span className="text-xs font-bold uppercase tracking-widest text-brand-primary">{lang === 'id' ? 'Info Terkini' : 'Latest Info'}</span>
                 <div className="flex items-center space-x-1.5 text-xs text-slate-500 dark:text-slate-300 bg-slate-100 dark:bg-white/10 rounded-full px-3 py-1">
                   <Eye className="h-3.5 w-3.5 text-brand-primary" />
-                  <span>Visitor: <strong className="font-semibold">{visitorCount.toLocaleString()}</strong></span>
+                  <span>Visitor: <strong className="font-semibold"><RollingCounter value={visitorCount} /></strong></span>
                 </div>
               </div>
 
