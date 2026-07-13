@@ -272,9 +272,15 @@ export default function SPMBOnline({ config, lang }: SPMBProps) {
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{lang === 'id' ? 'Status Penerimaan' : 'Quota Intake Status'}</span>
-                <span className="bg-emerald-100 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider animate-pulse">
-                  {lang === 'id' ? 'Dibuka / Aktif' : 'Active / Open'}
-                </span>
+                {config.status?.toLowerCase() === 'open' ? (
+                  <span className="bg-emerald-100 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider animate-pulse">
+                    {lang === 'id' ? 'Dibuka / Aktif' : 'Active / Open'}
+                  </span>
+                ) : (
+                  <span className="bg-rose-100 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
+                    {lang === 'id' ? 'Ditutup / Selesai' : 'Closed / Inactive'}
+                  </span>
+                )}
               </div>
               <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-800 dark:text-white">
                 {lang === 'id' ? 'Kuota Siswa Kelas 1 Baru' : 'New First Grade Quota'}
@@ -299,15 +305,24 @@ export default function SPMBOnline({ config, lang }: SPMBProps) {
               </div>
             </div>
 
-            <button
-              onClick={() => {
-                setRegSuccess(false);
-                setShowRegForm(true);
-              }}
-              className="mt-8 w-full text-center py-4 bg-brand-primary hover:bg-brand-primary/95 text-white font-bold rounded-2xl shadow-lg hover:shadow-brand-primary/20 transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
-            >
-              {lang === 'id' ? 'Daftar Online Sekarang' : 'Enroll Online Now'}
-            </button>
+            {config.status?.toLowerCase() === 'open' ? (
+              <button
+                onClick={() => {
+                  setRegSuccess(false);
+                  setShowRegForm(true);
+                }}
+                className="mt-8 w-full text-center py-4 bg-brand-primary hover:bg-brand-primary/95 text-white font-bold rounded-2xl shadow-lg hover:shadow-brand-primary/20 transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
+              >
+                {lang === 'id' ? 'Daftar Online Sekarang' : 'Enroll Online Now'}
+              </button>
+            ) : (
+              <button
+                disabled
+                className="mt-8 w-full text-center py-4 bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 font-bold rounded-2xl cursor-not-allowed border border-slate-200/50 dark:border-slate-700/50"
+              >
+                {lang === 'id' ? 'Pendaftaran Ditutup' : 'Admissions Closed'}
+              </button>
+            )}
           </div>
 
           {/* SPMB Closure Countdown Clock */}
